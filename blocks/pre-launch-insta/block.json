@@ -1,0 +1,15 @@
+{
+    "name": "acf/pre-launch-insta",
+    "title": "Pre Launch Insta",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/pre-launch-insta/pre-launch-insta.php"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "acf/full-width-text-callout",
+    "title": "Full Width Text Callout",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/full-width-text-callout/full-width-text-callout.php"
+    }
+}

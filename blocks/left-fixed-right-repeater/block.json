@@ -1,0 +1,15 @@
+{
+    "name": "acf/left-fixed-right-repeater",
+    "title": "Left fixed right repeater",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/left-fixed-right-repeater/left-fixed-right-repeater.php"
+    }
+}

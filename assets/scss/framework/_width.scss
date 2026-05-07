@@ -1,0 +1,39 @@
+
+
+// Mixin for media queries
+@mixin respond($breakpoint) {
+  $min-width: map-get($breakpoints, $breakpoint);
+  @if $min-width {
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "No value found for breakpoint `#{$breakpoint}`.";
+  }
+}
+
+// Base widths (mobile-first, no prefix)
+@each $w in $widths {
+  .w-#{$w} {
+    @if $w == 33 {
+      width: 33.33%;
+    } @else {
+      width: $w * 1%;
+    }
+  }
+}
+
+// Generate breakpoint-prefixed widths
+@each $bp, $min-width in $breakpoints {
+  @include respond($bp) {
+    @each $w in $widths {
+      .#{$bp}-w-#{$w} {
+        @if $w == 33 {
+          width: 33.33%;
+        } @else {
+          width: $w * 1%;
+        }
+      }
+    }
+  }
+}

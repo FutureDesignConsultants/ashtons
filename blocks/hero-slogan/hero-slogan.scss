@@ -1,0 +1,13 @@
+.hero-slogan {
+  height: calc(100vh - 77px);
+  @include flex(center, center, center);
+  text-align: center;
+
+  svg {
+    width: 4.5rem;
+    margin: auto;
+    circle {
+      @include fill-color(white);
+    }
+  }
+}

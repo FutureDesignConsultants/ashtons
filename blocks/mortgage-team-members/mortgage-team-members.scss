@@ -1,0 +1,225 @@
+.mortgage-team-members {
+  @include bg-color("off-white");
+  @include text-color(dark-grey);
+
+  .team-members-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+
+    @include min-width(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include min-width(md) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include min-width(xlg) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  h2 {
+    @include font-size-50;
+    margin-bottom: 1rem;
+  }
+
+  .team-member-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 350px;
+    /* match your design */
+
+    @include min-width(sm) {
+      height: 450px;
+    }
+
+    .name-hover {
+      position: absolute;
+      top: 25%;
+      right: 10%;
+
+      .name {
+        @include font-size-small;
+        @include text-color("dark-grey");
+        font-family: "segoe-script", sans-serif !important;
+      }
+    }
+
+    .hover-div-container {
+      // display: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+      pointer-events: none;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+      background-color: rgba(175, 230, 236, 0.9);
+      // padding: 2rem;
+      padding: 2rem 1.5rem;
+      @include max-width(xlg) {
+        padding: 1rem 1rem;
+      }
+      height: 100%;
+
+      .contact-div {
+        display: none;
+
+        a {
+          flex: 1;
+        }
+
+        svg {
+          height: 15px;
+          width: 15px;
+
+          @include min-width(xlg) {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+
+      .hover_description {
+        @include font-size-16;
+        @include min-width(md) {
+          @include font-size-16;
+        }
+        font-weight: 300;
+      }
+
+      .gap-4 {
+        gap: 0.25rem;
+      }
+
+      .email {
+        @include font-size-18;
+
+        @include min-width(md) {
+          @include font-size-14;
+        }
+        @include min-width(xlg) {
+          @include font-size-18;
+        }
+      }
+
+      .phone_number {
+        @include font-size-18;
+
+        @include min-width(md) {
+          @include font-size-14;
+        }
+        @include min-width(xlg) {
+          @include font-size-18;
+        }
+      }
+
+      .cta-button {
+        padding: 10px 15px;
+
+        @include min-width(md) {
+          padding: 10px 6px;
+        }
+
+        @include min-width(xlg) {
+          padding: 10px 14px;
+          justify-content: center;
+        }
+      }
+    }
+
+    .hover-div-container-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+
+      pointer-events: auto;
+
+      display: flex !important;
+      height: 100% !important;
+      flex-direction: column;
+      justify-content: space-between;
+      .cta-button {
+        @include max-width(xlg) {
+          justify-content: center;
+        }
+
+        span {
+          @include font-size-16;
+          @include max-width(xlg) {
+            @include font-size-14;
+          }
+        }
+      }
+    }
+
+    .hover-div-container-visible .contact-div {
+      display: flex;
+    }
+  }
+
+  /* Image behaves like a background */
+  .team-member-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .full-name {
+    @include ivy(600);
+    @include font-size-36;
+
+    @include min-width(sm) {
+      @include font-size-24;
+    }
+  }
+
+  .description {
+    font-weight: 300;
+    @include font-size-16;
+    @include min-width(sm) {
+      @include font-size-18;
+    }
+  }
+
+  /* Content sits on top */
+  .team-member-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+
+    @include bg-color(blue-tint);
+    padding: 20px;
+    border-radius: 12px;
+    .description {
+      @include font-size-16;
+      max-width: 70%;
+      @include max-width(sm) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .team-member-content,
+  .name-hover {
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .team-member-container.is-hovered .team-member-content,
+  .team-member-container.is-hovered .name-hover {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

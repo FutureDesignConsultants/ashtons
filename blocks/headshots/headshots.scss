@@ -1,0 +1,42 @@
+.headshots {
+  position: relative;
+  isolation: isolate;
+  @include max-width(sm) {
+    display: none;
+  }
+
+  .headshot-wrap {
+    position: relative;
+    z-index: 2;
+    aspect-ratio: 1 / 1;
+    will-change: transform, opacity;
+
+    img {
+      display: block;
+      border-radius: 12px;
+      z-index: 2;
+    }
+  }
+
+  .ribbon {
+    position: absolute;
+    z-index: -1;
+    width: 100dvw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    pointer-events: none;
+
+    @include max-width(sm) {
+      top: 30%;
+    }
+  }
+  @include min-width(sm) {
+    @include max-width(lg) {
+      .headshot-wrap:nth-child(n + 5) {
+        display: none;
+      }
+    }
+  }
+}

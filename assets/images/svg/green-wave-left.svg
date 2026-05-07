@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 782.77 366.06">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: url(#linear-gradient);
+        stroke-width: 100px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1754" y1="-836.18" x2="-242.56" y2="-301.2" gradientTransform="translate(262 -181.59) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c1d42f"/>
+      <stop offset=".54" stop-color="#56c9b8"/>
+      <stop offset="1" stop-color="#c1d42f"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path class="cls-1" d="M46.7,17.87s83.9,219.18,331.03,285.4c145.52,38.99,260.81-18.26,383.52-76.81"/>
+  </g>
+</svg>

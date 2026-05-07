@@ -1,0 +1,16 @@
+.property-details {
+  margin-top: 3rem;
+  border-bottom: 1px solid #d7d7d7;
+  padding-bottom: 2rem;
+
+  .description {
+    max-width: 80%;
+    @include max-width(sm) {
+      max-width: 100%;
+    }
+    p {
+      margin-bottom: 1rem;
+      @include font-size-18;
+    }
+  }
+}

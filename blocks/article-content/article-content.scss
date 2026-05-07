@@ -1,0 +1,60 @@
+.article-content {
+  .wrap {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    padding-left: clamp(1.5rem, 1.05rem + 1.92vw, 4.05rem);
+    padding-right: clamp(1.5rem, 1.05rem + 1.92vw, 4.05rem);
+
+    @include max-width(sm) {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    @include min-width(md) {
+      // padding-left: clamp(9rem, 6.3rem + 11.52vw, 24.3rem);
+      // padding-right: clamp(9rem, 6.3rem + 11.52vw, 24.3rem);
+      padding-left: clamp(5rem, 4rem + 7vw, 17rem);
+      padding-right: clamp(5rem, 4rem + 7vw, 17rem);
+    }
+    // @include min-width(xlg) {
+    //   padding-left: clamp(13.5rem, 9.45rem + 17.28vw, 36.45rem);
+    //   padding-right: clamp(13.5rem, 9.45rem + 17.28vw, 36.45rem);
+    // }
+  }
+
+  h1 {
+    line-height: 85%;
+    text-transform: uppercase;
+    @include text-color(dark-grey);
+    @include din(600);
+    @include font-size-60;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    line-height: normal;
+    @include text-color(dark-grey);
+    @include area(600);
+    @include font-size-26;
+    text-transform: none;
+    margin: 2rem 0;
+  }
+
+  p,
+  li,
+  a {
+    line-height: normal;
+    @include text-color(dark-grey);
+    @include area(400);
+    @include font-size-20;
+  }
+
+  a {
+    @include text-color(pink);
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      @include text-color(green);
+    }
+  }
+}

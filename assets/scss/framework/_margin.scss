@@ -1,0 +1,21 @@
+
+// Mixin for generating margin classes
+@mixin generate-margin-classes($prefix: "") {
+  @each $key, $value in $p-m-scale {
+    .#{$prefix}mar-#{$key}       { margin: $value !important; }
+    .#{$prefix}mar-top-#{$key}   { margin-top: $value !important; }
+    .#{$prefix}mar-right-#{$key} { margin-right: $value !important; }
+    .#{$prefix}mar-btm-#{$key}   { margin-bottom: $value !important; }
+    .#{$prefix}mar-left-#{$key}  { margin-left: $value !important; }
+  }
+}
+
+// Base
+@include generate-margin-classes();
+
+// Responsive
+@each $breakpoint, $size in $breakpoints {
+  @media (min-width: $size) {
+    @include generate-margin-classes($breakpoint + "-");
+  }
+}

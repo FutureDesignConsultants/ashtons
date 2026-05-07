@@ -1,0 +1,213 @@
+.meet-the-team-hero {
+  @include bg-color(dark-grey);
+
+  .team-hero-container {
+    display: flex;
+    flex-direction: column;
+    @include min-width(lg) {
+      display: grid;
+    }
+    grid-template-columns: repeat(12, 1fr);
+
+    .title-container {
+      padding-top: 1rem;
+      @include min-width(sm) {
+        padding-top: 0rem;
+      }
+      grid-column: 1 / 4;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .link-container {
+        cursor: pointer;
+        text-decoration: none;
+
+        a {
+          text-decoration: none;
+          display: flex;
+          gap: 0.5rem;
+        }
+      }
+
+      h1 {
+        line-height: 0.9;
+        @include font-size-100;
+      }
+    }
+
+    .img-container {
+      // display: none;
+      height: 350px;
+
+      @include min-width(lg) {
+        height: unset;
+        display: block;
+
+        grid-column: 5 / 7;
+        max-height: 300px;
+        rotate: 5deg;
+        position: relative;
+        // top: 35px;
+        top: 100px;
+      }
+
+      img {
+        border-radius: 12px;
+      }
+    }
+  }
+
+  .find-branch-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    @include min-width(lg) {
+      grid-column: 8 / 13;
+      // @include bg-color(charcoal);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: end;
+      padding-bottom: 4rem;
+    }
+
+    .cta-button {
+      max-width: fit-content;
+    }
+
+    .local-branch {
+      @include text-color(green);
+    }
+
+    .card--branch-finder {
+      background: #38383f;
+      border-radius: 12px;
+      height: 200px;
+      @include min-width(sm) {
+        height: 250px;
+      }
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h3 {
+        @include text-color(green);
+        max-width: 100%;
+        @include min-width(lg) {
+          max-width: 75%;
+        }
+        line-height: 1;
+      }
+
+      .button-form {
+        @include min-width(lg) {
+          max-width: fit-content;
+        }
+      }
+
+      @include max-width(sm) {
+        max-width: 100%;
+      }
+
+      position: relative;
+
+      img {
+        display: none;
+        @include min-width(lg) {
+          display: block;
+        }
+        //   width: 200px;
+        width: 180px;
+        //   right: 0rem;
+        right: 1rem;
+        top: 2rem;
+        //   top: -3rem;
+
+        //   top: -2rem;
+        @include min-width(xlg) {
+          // top: -7rem;
+          top: -3rem;
+        }
+
+        @media (min-width: 1600px) and (max-width: 1799px) {
+          top: -2rem;
+          right: 6rem;
+        }
+
+        position: absolute;
+        height: auto;
+        @include max-width(xlg) {
+          width: 180px;
+        }
+        @media (min-width: 1279px) and (max-width: 1500px) {
+          top: 1rem;
+          right: 2rem;
+          width: 150px;
+        }
+        @include max-width(lg) {
+          top: 21px;
+          width: 88px;
+        }
+        @include max-width(md) {
+        }
+      }
+    }
+
+    .branch-finder-form {
+      button {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        svg rect {
+          transition: fill 0.3s ease;
+        }
+
+        svg path {
+          transition: stroke 0.3s ease;
+        }
+
+        &:hover svg rect {
+          fill: #ff2e69;
+        }
+
+        &:hover svg path {
+          stroke: #ffffff;
+        }
+      }
+
+      .branch-finder-form__field {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        @include max-width(xlg) {
+          gap: 0.5rem;
+        }
+        input {
+          background: transparent;
+          max-height: 49px;
+          border: 1px solid rgb(193, 212, 47);
+          border-radius: 10px;
+          // width: 350px;
+          width: 550px;
+          @include max-width(xlg) {
+            width: 250px;
+          }
+          padding-left: 1rem;
+          padding-right: 1rem;
+          @include area;
+          @include font-size-16;
+          @include text-color(off-white);
+          &::placeholder {
+            @include text-color(off-white);
+          }
+          &:focus-within {
+            background: #57575c;
+          }
+          &:focus {
+            outline: none; // removes the blue focus ring
+          }
+        }
+      }
+    }
+  }
+}

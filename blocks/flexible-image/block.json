@@ -1,0 +1,15 @@
+{
+    "name": "acf/flexible-image",
+    "title": "Flexible Image",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/flexible-image/flexible-image.php"
+    }
+}

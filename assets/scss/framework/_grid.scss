@@ -1,0 +1,105 @@
+// Respond mixin for media queries
+@mixin respond($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "No value found for breakpoint `#{$breakpoint}`.";
+  }
+}
+
+// Container max-widths per breakpoint
+$container-widths: (
+  sm: 720px,
+  md: 960px,
+  lg: 1140px,
+  xlg: 1320px,
+);
+
+// Container class: max-width + center horizontally
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; // optional side padding
+  padding-right: 1rem;
+
+  @each $bp, $max-width in $container-widths {
+    @include respond($bp) {
+      max-width: $max-width;
+    }
+  }
+}
+
+// Grid display utility
+.grid {
+  display: grid;
+}
+
+// Grid gap utilities (using your $gaps map)
+@each $size, $val in $gaps {
+  .gap-#{$size} {
+    gap: $val;
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    @include respond($breakpoint) {
+      .#{$breakpoint}\:gap-#{$size} {
+        gap: $val;
+      }
+    }
+  }
+}
+
+// Grid column count utilities
+// Default max columns up to 12
+$max-columns: 12;
+
+@for $i from 1 through $max-columns {
+  .grid-cols-#{$i} {
+    grid-template-columns: repeat($i, 1fr);
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    @include respond($breakpoint) {
+      .#{$breakpoint}\:grid-cols-#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
+  }
+}
+
+// Auto-flow utilities (optional)
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include respond($breakpoint) {
+    .#{$breakpoint}\:grid-flow-row {
+      grid-auto-flow: row;
+    }
+    .#{$breakpoint}\:grid-flow-col {
+      grid-auto-flow: column;
+    }
+  }
+}
+
+// Column-span utilities for grid items (optional)
+@for $i from 1 through $max-columns {
+  .col-span-#{$i} {
+    grid-column: span #{$i};
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    @include respond($breakpoint) {
+      .#{$breakpoint}\:col-span-#{$i} {
+        grid-column: span #{$i};
+      }
+    }
+  }
+}

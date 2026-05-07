@@ -1,0 +1,47 @@
+/* Base typography
+================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include din;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+h1 {
+  @include font-size-125;
+}
+
+h2 {
+  @include font-size-100;
+}
+
+h3 {
+  @include font-size-60;
+}
+
+h4 {
+  @include font-size-32;
+}
+
+ul,
+li {
+  @include font-size-20;
+}
+
+p,
+a,
+ul,
+li {
+  @include area;
+  @include font-size-18;
+  line-height: 1.3;
+}
+
+span {
+  @include area;
+}

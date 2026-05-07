@@ -1,0 +1,70 @@
+.full-width-cta-banner {
+  h3 {
+    line-height: 1;
+
+    @include font-size-50;
+  }
+  .banner-wrap {
+    grid-column: 2 / 12;
+    @include max-width(md) {
+      grid-column: 1 /-1;
+      padding: 2rem !important;
+    }
+    border-radius: 12px;
+    padding: 4rem;
+    will-change: transform, opacity;
+
+    .content {
+      align-content: center;
+      grid-column: span 5;
+      @include max-width(md) {
+        grid-column: 1 /-1;
+      }
+    }
+
+    .cta-button {
+      margin-top: 3rem;
+    }
+  }
+
+  .illustration-wrap {
+    &.illustration-wrap--illustration-1 {
+      position: absolute;
+      right: 7rem;
+      width: 400px;
+      top: -2rem;
+      @include max-width(lg) {
+        width: 300px;
+      }
+
+      @include max-width(md) {
+        width: 300px;
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+
+      @include max-width(sm) {
+        width: 200px;
+        margin: auto;
+      }
+    }
+
+    &.illustration-wrap--illustration-2 {
+      width: 100%;
+      grid-column: 7 / 13;
+      @include max-width(sm) {
+        width: 250px;
+        grid-column: 1 / -1;
+        margin: auto;
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      //   max-width: 746px;
+      height: auto;
+    }
+  }
+}

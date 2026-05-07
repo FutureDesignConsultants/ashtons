@@ -1,0 +1,18 @@
+.hero-intro-text {
+  height: calc(100vh - 77px);
+  @include min-width(md) {
+    height: calc(85vh - 77px);
+    p {
+      max-width: 60%;
+      margin: auto;
+    }
+  }
+  @include flex(center, center, center);
+  text-align: center;
+
+  svg {
+    width: 2.5rem;
+    margin: auto;
+    @include fill-color(white);
+  }
+}

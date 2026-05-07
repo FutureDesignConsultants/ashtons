@@ -1,0 +1,15 @@
+{
+    "name": "acf/case-study-overview",
+    "title": "Case Study Overview",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/case-study-overview/case-study-overview.php"
+    }
+}

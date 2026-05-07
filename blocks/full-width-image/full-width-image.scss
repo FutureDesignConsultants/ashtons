@@ -1,0 +1,15 @@
+.full-width-image {
+  .img-wrap {
+    img {
+      @include img-border-radius;
+    }
+    height: 15rem;
+    @include min-width(sm) {
+      height: 38rem;
+    }
+
+    @include min-width(xlg) {
+      height: 55rem;
+    }
+  }
+}

@@ -1,0 +1,165 @@
+.valuation-form {
+  .form-wrap {
+    width: 90%;
+    height: 80%;
+    padding: 2rem 3rem;
+    @include bg-color(white);
+    border-radius: 12px;
+    max-width: 1000px;
+
+    h1 {
+      line-height: 85%;
+      @include text-color(dark-grey);
+      @include din(600);
+      @include font-size-60;
+      text-wrap: wrap;
+
+      span {
+        @include text-color(pink);
+        @include din(600);
+      }
+    }
+
+    p,
+    .gform_confirmation_message {
+      line-height: normal;
+      @include text-color(dark-grey);
+      @include font-size-20;
+      @include area(400);
+    }
+
+    .gform_confirmation_message {
+      margin-top: 2rem;
+    }
+
+    form {
+      padding: 2rem 0;
+
+      #gform_fields_5 .gfield .gfield_label {
+        line-height: normal;
+        @include text-color(dark-grey);
+        @include font-size-20;
+        @include area(400);
+        margin-bottom: 16px;
+      }
+
+      .gfield_radio {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .gfield_radio .gchoice {
+        display: flex;
+        flex: 1;
+      }
+
+      /* hide real radio */
+      .gfield_radio input {
+        //display: none;
+        position: absolute;
+        opacity: 0;
+      }
+
+      /* make label look like button */
+      .gfield_radio label,
+      .ginput_container textarea,
+      .ginput_container input,
+      .ginput_container select {
+        border: 1px solid #d7d7d7;
+        padding: 18px;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 5px;
+        max-width: unset;
+        color: var(--Dark-Grey, #2d2d35);
+        @include text-color(dark-grey);
+        @include font-size-18;
+        @include area(300);
+        line-height: normal;
+        @include bg-color(off-white);
+      }
+
+      #field_5_17 {
+        line-height: normal;
+        @include text-color(dark-grey);
+        @include font-size-20;
+        @include area(400);
+      }
+
+      .gfield--type-html {
+        @include text-color(dark-grey);
+        font-size: 15px;
+        @include area(300);
+        line-height: normal;
+      }
+
+      .ginput_container textarea,
+      .ginput_container input,
+      .ginput_container select {
+        text-align: left;
+      }
+
+      .gfield_radio label:hover {
+        background: #f3f3f3;
+      }
+
+      .gfield_radio input:checked + label {
+        @include bg-color(green);
+        @include text-color(dark-grey);
+      }
+
+      .ginput_container_select {
+        position: relative;
+        select {
+          appearance: none;
+        }
+      }
+
+      .ginput_container_select::after {
+        content: "▾";
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      .gform-footer {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .form-note {
+          text-wrap: balance;
+          font-size: 13px;
+          line-height: 126%;
+          color: #b8b9bd;
+          @include area(300);
+          width: 100%;
+
+          @include min-width(md) {
+            width: 60%;
+          }
+        }
+
+        .cta-button {
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    @include min-width(md) {
+      padding: 3rem 4rem;
+      width: 70%;
+    }
+
+    @include min-width(md) {
+      padding: 3rem 9rem;
+    }
+  }
+}

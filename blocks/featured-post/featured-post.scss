@@ -1,0 +1,31 @@
+.featured-post {
+  h2 {
+    @include font-size-small;
+  }
+  h3 {
+    @include font-size-large;
+  }
+
+  .thumbnail {
+    height: 17rem;
+    img {
+      @include img-border-radius;
+    }
+    @include min-width(lg) {
+      height: 25rem;
+    }
+
+    @include min-width(xlg) {
+      height: 43rem;
+    }
+  }
+
+  .featured-post-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    a {
+      pointer-events: auto; /* Re-enable pointer events for nested links */
+    }
+  }
+}

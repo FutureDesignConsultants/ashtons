@@ -1,0 +1,324 @@
+.enquiry-form {
+  overflow: hidden;
+
+  /* Make the consent field a horizontal row */
+  .ginput_container_consent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Push the injected button to the right */
+  .consent-submit {
+    margin-left: auto;
+    display: flex;
+  }
+
+  /* Hide the footer (it will only contain a hidden input anyway) */
+  .gform-footer {
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+  }
+  .gform_confirmation_message {
+    @include area;
+  }
+  .gform-footer::before,
+  .gform-footer::after {
+    display: none;
+  }
+
+  .gfield--type-consent {
+    @include min-width(sm) {
+      position: absolute;
+      bottom: 1rem;
+    }
+  }
+
+  .gfield--type-consent input[type="checkbox"] {
+    // @include max-width(sm) {
+    //   -webkit-appearance: checkbox !important;
+    //   appearance: checkbox !important;
+    //   max-width: 18px !important;
+    //   width: auto !important;
+    //   height: auto !important;
+    // }
+
+    // @include min-width(sm) {
+    //   width: 18px !important;
+    //   height: 18px !important;
+    // }
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .ginput_container_consent input[type="checkbox"] {
+      -webkit-transform: scale(0.6);
+      transform: scale(0.6);
+      transform-origin: center center;
+      margin-top: 0.2em;
+    }
+  }
+
+  .ginput_container_consent input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* Mobile stack */
+  @include max-width(sm) {
+    #gform_1 #field_1_8 .ginput_container_consent {
+      flex-direction: row;
+      align-items: center;
+    }
+    #gform_1 #field_1_8 .consent-submit {
+      margin-left: 0;
+      width: 100%;
+    }
+    #gform_1 #field_1_8 .consent-submit .custom-submit-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .wrap {
+    position: relative;
+    overflow: visible;
+
+    .img-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .background-img {
+      position: absolute;
+      z-index: 2;
+      border-radius: 12px;
+      display: none;
+
+      &.one {
+        width: 268px;
+        height: 268px;
+        top: 50%;
+        left: 5%;
+        transform: translate(-10%, -50%) rotate(6deg);
+      }
+
+      &.two {
+        width: 248px;
+        height: 248px;
+        top: 42%;
+        right: 0;
+        transform: translate(-60%, -30%) rotate(-6deg);
+        z-index: 3;
+      }
+
+      &.three {
+        width: 252px;
+        height: 252px;
+        bottom: 0;
+        right: 0;
+        transform: translate(-30%, 20%) rotate(14deg);
+      }
+
+      @include min-width(md) {
+        display: block;
+      }
+    }
+
+    .background-svg {
+      position: absolute;
+      inset: 50% auto auto 54%;
+      transform: translate(-50%, -50%) scaleX(0.95) scaleY(0.8);
+      width: 100vw;
+      max-width: none;
+      z-index: 1;
+      pointer-events: none;
+
+      @include min-width(xlg) {
+        height: auto;
+      }
+    }
+
+    h2 {
+      line-height: 85%;
+      @include text-color(dark-grey);
+      @include font-size-50;
+      @include din(700);
+      text-wrap: balance;
+      margin-bottom: 2rem;
+      width: 100%;
+
+      @include max-width(sm) {
+        width: 60%;
+      }
+
+      @include min-width(md) {
+        width: 50%;
+      }
+    }
+  }
+
+  .form-wrapper {
+    grid-column: 1 / -1;
+    z-index: 4;
+    background: white;
+    padding: 3rem;
+    position: relative;
+    border-radius: 12px;
+    @include max-width(sm) {
+      padding: 2rem 1rem;
+    }
+    & > svg {
+      position: absolute;
+      top: -10px;
+      right: 0;
+      width: 200px;
+      height: auto;
+      left: unset;
+      @include max-width(sm) {
+        top: -44px;
+        width: 150px;
+      }
+      //   transform: translate(0%, -30%);
+
+      @include min-width(md) {
+        // transform: translate(20%, -30%);
+        width: 242px;
+      }
+    }
+
+    .gform_wrapper.gravity-theme input[type="text"] {
+      padding: 10px !important;
+      @include font-size-16;
+    }
+
+    .gform_title {
+      display: none;
+    }
+
+    .cta-button {
+      margin-top: -14px;
+    }
+
+    .ginput_container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .gfield_select {
+      border-radius: 5px;
+      border: 1px solid #d7d7d7;
+      @include bg-color(off-white);
+      @include area;
+      padding: 10px;
+      @include font-size-16;
+      font-weight: 300;
+
+      &::placeholder {
+        @include text-color(dark-grey);
+        @include area(300);
+        @include font-size-18;
+      }
+    }
+
+    .gfield_select:required:invalid {
+      @include text-color(dark-grey); // or a lighter “placeholder” colour
+      @include area(300);
+    }
+
+    textarea {
+      min-height: 125px;
+    }
+
+    form {
+      position: relative;
+      input,
+      textarea {
+        border-radius: 5px;
+        border: 1px solid #d7d7d7;
+        @include bg-color(off-white);
+        @include area;
+        line-height: 1;
+        padding: 10px;
+
+        &::placeholder {
+          line-height: normal;
+          @include text-color(dark-grey);
+          @include area(300);
+          @include font-size-16;
+        }
+      }
+
+      label {
+        @include text-color(dark-grey);
+        @include area(400);
+        @include font-size-16;
+        margin-top: 4px;
+      }
+
+      .gfield--type-consent {
+        width: 100%;
+        text-wrap: balance;
+
+        @include min-width(md) {
+          width: 70%;
+        }
+      }
+
+      .gfield_select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        @include text-color(dark-grey);
+        &::placeholder {
+          line-height: normal;
+          @include text-color(dark-grey);
+          @include area(300);
+          @include font-size-16;
+        }
+        padding-right: 3rem; // space for icon
+
+        background-image: url("data:image/svg+xml;utf8,<svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='13' cy='13' r='13' fill='%23D9D9D9'/><path d='M18.2644 10.7583L13.0391 15.5166L7.81371 10.7583' stroke='%232D2D35'/></svg>");
+
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 26px 26px;
+
+        @include max-width(sm) {
+          background-size: 17px 17px;
+          color: #2d2d35;
+          line-height: 2;
+          min-height: 32px;
+        }
+      }
+
+      .gform-footer {
+        margin-top: 2rem;
+        padding: 0;
+
+        @include min-width(md) {
+          justify-content: flex-end;
+          margin: 0;
+          padding: 0;
+          margin-top: 50px;
+        }
+      }
+    }
+
+    .gform_wrapper.gravity-theme .gfield {
+      margin-bottom: 0 !important;
+    }
+
+    @include min-width(md) {
+      grid-column: 4 / 10;
+    }
+  }
+
+  @include max-width(md) {
+    padding-bottom: 0;
+  }
+}

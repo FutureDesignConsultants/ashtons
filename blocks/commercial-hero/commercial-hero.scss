@@ -1,0 +1,191 @@
+.commercial-hero {
+  position: relative;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  @include min-width(xlg) {
+    padding-top: 11rem;
+    padding-bottom: 8rem;
+  }
+
+  @include max-width(sm) {
+    padding-bottom: 0rem;
+    margin-bottom: -7rem;
+  }
+
+  .left {
+    z-index: 1;
+    grid-column: 1 / -1;
+    align-self: center;
+
+    @include min-width(md) {
+      grid-column: span 6;
+    }
+    @include min-width(xlg) {
+      grid-column: span 6;
+    }
+  }
+
+  .right {
+    position: relative;
+    z-index: 1;
+    grid-column: 1 / -1;
+    min-height: 400px;
+    margin-top: 2rem;
+
+    @include min-width(md) {
+      grid-column: span 6;
+      margin-top: 0rem;
+    }
+    @include min-width(xlg) {
+      grid-column: span 6;
+      margin-left: 4rem;
+    }
+  }
+
+  h1 {
+    @include text-color(dark-grey);
+    @include font-size-100;
+    line-height: 0.9;
+  }
+
+  .hero-text {
+    @include text-color(dark-grey);
+    max-width: 80%;
+    margin-top: 1rem;
+    @include min-width(xlg) {
+      margin-top: 0rem;
+    }
+    @include max-width(sm) {
+      max-width: 100%;
+    }
+  }
+
+  .cta-button {
+    margin-top: 3rem;
+  }
+
+  .bg-ribbon {
+    width: 100dvw;
+    height: auto;
+    position: absolute;
+    top: 9rem;
+    @include max-width(md) {
+      top: 19rem;
+    }
+    @include max-width(sm) {
+      top: 31rem;
+    }
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    z-index: 1;
+    max-width: 600px;
+    @include max-width(xlg) {
+      max-width: 500px;
+    }
+
+    @include max-width(md) {
+      max-width: 400px;
+      left: 2rem;
+    }
+
+    @include max-width(sm) {
+      max-width: 200px;
+      left: 2rem;
+    }
+    transform: rotate(-5.64deg);
+    transform-origin: center;
+
+    img {
+      display: block;
+      border-radius: 12px;
+    }
+  }
+
+  .hero-image_2 {
+    position: absolute;
+    right: 4rem;
+    bottom: 0rem;
+    z-index: 1;
+    max-width: 250px;
+    @include max-width(xlg) {
+      max-width: 250px;
+      bottom: 9rem;
+      right: 0rem;
+    }
+
+    @include max-width(lg) {
+      max-width: 213px;
+      bottom: 13rem;
+      right: -1.5rem;
+    }
+
+    @include max-width(md) {
+      bottom: 1rem;
+      right: 5.5rem;
+    }
+
+    @include max-width(sm) {
+      max-width: 150px;
+      bottom: 13rem;
+      right: 1.5rem;
+    }
+    transform: rotate(5.64deg);
+    transform-origin: center;
+
+    img {
+      display: block;
+      border-radius: 12px;
+    }
+  }
+
+  .mortgage-box {
+    @include bg-color(blue-tint);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 5rem;
+    gap: 1rem;
+    @include min-width(xlg) {
+      max-width: 90%;
+    }
+
+    .text {
+      max-width: 65%;
+    }
+
+    @include max-width(md) {
+      max-width: fit-content;
+    }
+
+    h3 {
+      @include font-size-32;
+      @include text-color(dark-grey);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+    svg {
+      width: 150px;
+      @include max-width(sm) {
+        width: 125px;
+      }
+    }
+
+    .text {
+      p {
+        @include max-width(sm) {
+          @include font-size-14;
+        }
+      }
+    }
+
+    .cta-button {
+      @include max-width(sm) {
+        margin-top: 1rem;
+        max-width: fit-content;
+      }
+    }
+  }
+}

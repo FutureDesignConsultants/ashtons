@@ -1,0 +1,24 @@
+// Mixin for generating padding classes
+@mixin generate-padding-classes($prefix: "") {
+  @each $key, $value in $p-m-scale {
+    .#{$prefix}pad-#{$key}         { padding: $value !important; }
+    .#{$prefix}pad-top-#{$key}     { padding-top: $value !important; }
+    .#{$prefix}pad-right-#{$key}   { padding-right: $value !important; }
+    .#{$prefix}pad-btm-#{$key}     { padding-bottom: $value !important; }
+    .#{$prefix}pad-left-#{$key}    { padding-left: $value !important; }
+    .#{$prefix}pad-block-#{$key}   { 
+      padding-top: $value !important;
+      padding-bottom: $value !important;
+    }
+  }
+}
+
+// Base
+@include generate-padding-classes();
+
+// Responsive
+@each $breakpoint, $size in $breakpoints {
+  @media (min-width: $size) {
+    @include generate-padding-classes($breakpoint + "-");
+  }
+}

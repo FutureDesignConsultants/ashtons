@@ -1,0 +1,35 @@
+// _padding.scss
+
+/* Block Padding Top */
+.pad-top-default {
+  padding-top: clamp(4rem, 8vw, 12rem);
+}
+
+.pad-top-small {
+  padding-top: clamp(2rem, 4vw, 6rem);
+}
+
+.pad-top-large {
+  padding-top: clamp(6rem, 12vw, 18rem);
+}
+
+.pad-top-none {
+  padding-top: 0;
+}
+
+/* Block Padding Bottom */
+.pad-btm-default {
+  padding-bottom: clamp(4rem, 8vw, 12rem);
+}
+
+.pad-btm-small {
+  padding-bottom: clamp(2rem, 4vw, 6rem);
+}
+
+.pad-btm-large {
+  padding-bottom: clamp(6rem, 12vw, 18rem);
+}
+
+.pad-btm-none {
+  padding-bottom: 0;
+}

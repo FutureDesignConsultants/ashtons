@@ -1,0 +1,15 @@
+{
+    "name": "acf/stats-v1",
+    "title": "Stats V1",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/stats-v1/stats-v1.php"
+    }
+}

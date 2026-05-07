@@ -1,0 +1,80 @@
+.about-hero {
+  position: relative;
+  margin-top: 2rem;
+  overflow: visible;
+  .bg-dec {
+    position: absolute;
+    width: 100dvw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    pointer-events: none;
+
+    @include max-width(sm) {
+      top: 30%;
+    }
+  }
+  .about-hero__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    span {
+      line-height: 0.9;
+      @include din;
+      @include font-size-100;
+    }
+  }
+  .text-wrap {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .about-hero__text {
+    display: flex;
+    justify-content: center;
+    max-width: 50ch;
+  }
+  .additional-buttons {
+    display: flex;
+    margin-top: 2rem;
+    gap: 32px;
+    @include max-width(sm) {
+      gap: 0.75rem;
+    }
+    justify-content: center;
+
+    .cta-button {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 767px) {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-inline: 1rem;
+      margin-inline: -1rem;
+
+      .cta-button {
+        flex: 0 0 auto;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      scrollbar-width: none;
+    }
+
+    @media (min-width: 768px) {
+      flex-wrap: wrap;
+      overflow: visible;
+      justify-content: center;
+    }
+  }
+}

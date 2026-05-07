@@ -1,0 +1,89 @@
+.two-column-cta {
+  @include bg-color("off-white");
+  .cards-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+
+    @include min-width(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .single-card-container {
+      padding: 3rem 2rem;
+      @include min-width(sm) {
+        padding: 4rem;
+      }
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+
+      @include min-width(lg) {
+        flex-direction: row;
+      }
+
+      .left-side {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: space-between;
+        min-height: 220px;
+
+        @include min-width(sm) {
+          min-height: 275px;
+        }
+
+        @include min-width(md) {
+          min-height: 330px;
+        }
+
+        @include min-width(lg) {
+          width: 50%;
+        }
+
+        .title {
+          @include font-size-60;
+          // max-width: 250px;
+          @include text-color(dark-grey);
+
+          @include min-width(md) {
+            max-width: 250px;
+          }
+          line-height: 0.9;
+        }
+
+        .body {
+          @include text-color(charcoal);
+        }
+
+        .cta-button {
+          width: fit-content;
+        }
+      }
+
+      .right-side {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        // flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        margin-top: 2rem;
+
+        @include min-width(lg) {
+          width: 50%;
+          margin-top: 0rem;
+        }
+
+        img {
+          max-width: 250px;
+          @include min-width(xlg) {
+            max-width: 335px;
+          }
+          // max-height: 200px;
+        }
+      }
+    }
+  }
+}

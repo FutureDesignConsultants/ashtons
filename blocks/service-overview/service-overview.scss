@@ -1,0 +1,21 @@
+.service-overview {
+  .content {
+    order: -1;
+
+    img {
+      @include img-border-radius;
+    }
+
+    @include min-width(sm) {
+      order: 2;
+    }
+  }
+
+  h2 {
+    @include font-size-base;
+  }
+
+  h3 {
+    @include font-size-large;
+  }
+}

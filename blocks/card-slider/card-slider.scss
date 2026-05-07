@@ -1,0 +1,281 @@
+.card-slider {
+  overflow: hidden;
+  .wrap {
+    max-width: 100rem;
+  }
+  .swiper {
+    overflow: visible;
+    position: relative;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    box-sizing: border-box;
+    height: auto;
+    aspect-ratio: unset;
+    padding: 0;
+    // max-width: 550px;
+
+    .card {
+      position: relative;
+      box-sizing: border-box;
+      padding: 3rem;
+      border-radius: 12px;
+      min-height: clamp(360px, 55vh, 370px);
+
+      @include max-width(sm) {
+        margin-top: 3rem;
+        padding: 2rem;
+      }
+
+      @include max-width(lg) {
+        min-height: clamp(360px, 75vh, 370px);
+      }
+
+      @include min-width(xlg) {
+        min-height: clamp(360px, 75vh, 435px);
+      }
+
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      .content {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        min-width: 0;
+        justify-content: flex-start;
+        gap: 1rem;
+
+        h4 {
+          line-height: 85%;
+          text-transform: uppercase;
+          @include font-size-50;
+          @include din(700);
+          @include text-color(dark-grey);
+          text-wrap: unset;
+        }
+
+        p {
+          text-wrap: balance;
+          line-height: normal;
+          text-transform: initial;
+          @include font-size-16;
+          @include area(400);
+          @include text-color(charcoal);
+        }
+
+        @include min-width(md) {
+          width: 50%;
+          justify-content: space-between;
+        }
+      }
+
+      img {
+        position: absolute;
+        right: 2rem;
+        bottom: 2rem;
+        width: auto;
+        height: auto;
+        max-height: 15rem;
+        @include max-width(sm) {
+          max-width: 36% !important;
+        }
+        max-width: 50%;
+
+        @include min-width(lg) {
+          height: auto;
+          max-width: 175px;
+          max-height: none;
+        }
+
+        @include min-width(xlg) {
+          height: auto;
+          max-width: 250px;
+          max-height: none;
+        }
+      }
+
+      @include min-width(md) {
+        padding: 3rem;
+      }
+    }
+  }
+
+  .swiper {
+    padding-left: 0;
+    margin-left: 0;
+    min-height: 450px;
+  }
+  .swiper-wrapper {
+    margin-left: 0;
+  }
+
+  /* kill Swiper default arrow icons */
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: none !important;
+  }
+
+  /* make the button size match your svg and keep clicks working */
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* if you position them yourself */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .arrow-mobile {
+    display: none !important;
+  }
+
+  @include max-width(sm) {
+    .arrow-desktop {
+      display: none !important;
+    }
+
+    .arrow-mobile {
+      display: block !important;
+    }
+
+    .swiper-nav {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 0px;
+      z-index: 10;
+      gap: 1rem;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: static;
+      width: 45px;
+      height: 45px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+  }
+
+  /* make svg fill the button, but let the wrapper receive clicks */
+  .swiper-button-next svg,
+  .swiper-button-prev svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    svg {
+      transition: transform 0.2s ease;
+    }
+
+    circle,
+    path {
+      transition:
+        fill 0.25s ease,
+        stroke 0.25s ease;
+      opacity: 1;
+    }
+
+    &:hover {
+      circle {
+        fill: #c1d42f;
+        fill-opacity: 1; // 👈 ensure full opacity
+      }
+
+      path {
+        stroke: #2d2d35;
+      }
+    }
+  }
+
+  .swiper {
+    overflow: visible;
+    padding: 0 60px; /* increase for more peek */
+    @include max-width(sm) {
+      padding: 0;
+    }
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease; // optional
+  }
+  .swiper.swiper-initialized {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .swiper-button-next:after {
+    content: "";
+    background-image: url(../../assets/images/svg/next-white.svg);
+  }
+
+  .swiper-button-prev:after {
+    content: "";
+    background-image: url(../../assets/images/svg/prev-white.svg);
+  }
+
+  @include min-width(md) {
+    .swiper-button-next:after {
+      content: "";
+      background-image: url(../../assets/images/svg/next-grey.svg);
+    }
+
+    .swiper-button-prev:after {
+      content: "";
+      background-image: url(../../assets/images/svg/prev-grey.svg);
+    }
+  }
+
+  .arrow-mobile {
+    display: none;
+  }
+
+  .arrow-desktop {
+    display: block;
+  }
+
+  @include max-width(sm) {
+    .arrow-desktop {
+      display: none !important;
+    }
+
+    .arrow-mobile {
+      display: block;
+    }
+  }
+
+  .button-wrap {
+    margin-top: -2rem;
+    position: relative;
+    z-index: 10;
+    @include max-width(sm) {
+      margin-top: 3rem;
+    }
+
+    @include min-width(xlg) {
+      margin-top: 3rem;
+    }
+  }
+}

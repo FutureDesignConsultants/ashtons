@@ -1,0 +1,266 @@
+// Min-width media query
+@mixin min-width($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+
+  @if $size {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "⚠️ No value found for breakpoint `#{$breakpoint}`.";
+  }
+}
+
+// Max-width media query
+@mixin max-width($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+
+  @if $size {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "⚠️ No value found for breakpoint `#{$breakpoint}`.";
+  }
+}
+
+// Flex
+@mixin flex($direction: null, $justify: null, $align: null) {
+  display: flex;
+  @if $direction != null {
+    flex-direction: $direction;
+  }
+  @if $justify != null {
+    justify-content: $justify;
+  }
+  @if $align != null {
+    align-items: $align;
+  }
+}
+
+// Font family
+
+@mixin font-family($font) {
+  @if $font == "primary" {
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+      "helvetica-neue-lt-pro", sans-serif !important; // system fonts first, Adobe font last
+  } @else if $font == "secondary" {
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+      "helvetica-neue-lt-pro", sans-serif !important;
+  } @else {
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+      "helvetica-neue-lt-pro", sans-serif !important;
+  }
+}
+
+// ------------------------------------
+// Font Mixins
+// ------------------------------------
+
+@mixin din($weight: normal, $style: normal) {
+  font-family: "DIN Condensed", sans-serif !important;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin area($weight: normal, $style: normal) {
+  font-family: "Area Normal", sans-serif !important;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin ivy($weight: normal, $style: normal) {
+  font-family: "IvyJournal", serif !important;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+// Font sizes
+
+@mixin font-size-x-small {
+  font-size: clamp(0.85rem, 0.74rem + 0.41vi, 1.225rem);
+}
+
+@mixin font-size-base {
+  font-size: clamp(1rem, 0.861rem + 0.487vi, 1.44rem);
+}
+
+@mixin font-size-small {
+  font-size: clamp(1.125rem, 1.0032rem + 0.5195vw, 1.75rem);
+}
+
+@mixin font-size-medium {
+  font-size: clamp(1.5rem, 1.3052rem + 0.8312vw, 2.5rem);
+}
+
+@mixin font-size-large {
+  font-size: clamp(2.25rem, 1.7046rem + 2.3273vw, 5.05rem);
+}
+
+@mixin font-size-x-large {
+  font-size: clamp(3rem, 2.1039rem + 3.8234vw, 7.6rem);
+}
+
+// ------------------------------------
+// Fluid Font Size Mixins (desktop-tuned)
+// Scales between $min-vw and $max-vw only.
+// ------------------------------------
+
+// @mixin fluid-font($min, $max, $min-vw: 1280px, $max-vw: 1680px) {
+//   font-size: clamp(
+//     #{$min},
+//     calc(
+//       #{$min} + (#{$max} - #{$min}) *
+//         ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))
+//     ),
+//     #{$max}
+//   );
+// }
+
+@mixin fluid-font($min, $max) {
+  $diff: ($max - $min) / 1px; // Strip units for the multiplier logic
+
+  font-size: clamp(
+    #{$min},
+    calc(#{$min} + #{$diff} * ((100vw - 768px) / 672)),
+    #{$max}
+  );
+}
+
+// ------------------------------------
+// Type scale (keeps current "max" values for large desktops)
+// ------------------------------------
+
+@mixin font-size-125 {
+  @include fluid-font(56px, 125px);
+} // was 64px min
+@mixin font-size-100 {
+  @include fluid-font(48px, 100px);
+} // was 56px min
+@mixin font-size-80 {
+  @include fluid-font(44px, 80px);
+}
+
+@mixin font-size-60 {
+  @include fluid-font(36px, 60px);
+} // was 40px min
+@mixin font-size-50 {
+  @include fluid-font(32px, 50px);
+}
+@mixin font-size-40 {
+  @include fluid-font(26px, 40px);
+} // was 28px min
+@mixin font-size-36 {
+  @include fluid-font(24px, 36px);
+} // was 24px min
+@mixin font-size-32 {
+  @include fluid-font(22px, 32px);
+} // was 24px min
+@mixin font-size-26 {
+  @include fluid-font(19px, 26px);
+} // was 20px min
+@mixin font-size-24 {
+  @include fluid-font(18px, 24px);
+} // was 19px min
+@mixin font-size-22 {
+  @include fluid-font(17px, 22px);
+} // was 18px min
+@mixin font-size-20 {
+  @include fluid-font(16px, 20px);
+} // was 17px min
+@mixin font-size-18 {
+  @include fluid-font(15px, 18px);
+} // was 16px min
+@mixin font-size-16 {
+  @include fluid-font(14px, 16px);
+} // was 15px min
+
+@mixin font-size-14 {
+  font-size: 14px; // kept fixed intentionally
+}
+
+@mixin font-size-12 {
+  font-size: 12px; // kept fixed intentionally
+}
+
+// Borders
+@mixin border-color($color, $width: 1px, $style: solid) {
+  border: $width $style map-get($colors, $color);
+}
+
+// Border radius
+@mixin border-radius($radius: 1.5rem) {
+  border-radius: $radius;
+}
+
+// Border radius
+@mixin img-border-radius($radius: 0.5rem) {
+  border-radius: $radius;
+}
+
+@mixin gradient-text-reveal($active-color, $base-color: null) {
+  $base: if($base-color == null, map-get($colors, white), $base-color);
+
+  --toggle-color: #{$active-color};
+
+  background: linear-gradient(to top, #{$active-color} 50%, #{$base} 50%);
+  background-size: 100% 200%;
+  background-position: 0 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  transition: background-position 0.6s ease;
+
+  &:hover,
+  &:focus-visible,
+  &.is-active {
+    background-position: 0 100%;
+  }
+}
+
+@mixin gradient-text-reveal-variant($active-color, $base-color: null) {
+  $base: if($base-color == null, map-get($colors, white), $base-color);
+
+  // optional CSS var if you want to reference it elsewhere
+  --toggle-color: #{$active-color};
+
+  background: linear-gradient(to top, #{$active-color} 50%, #{$base} 50%);
+  background-size: 100% 200%;
+  background-position: 0 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  transition: background-position 0.6s ease;
+
+  &:hover,
+  &:focus-visible,
+  &.is-active {
+    background-position: 0 100%;
+  }
+}
+
+@function color-value($value, $map: null) {
+  @if $map != null and type-of($map) == "map" and map-has-key($map, $value) {
+    @return map-get($map, $value);
+  }
+  @return $value; // raw CSS color fallback
+}
+
+@mixin fill-color($value, $map: null) {
+  fill: color-value($value, $map);
+}
+
+@mixin stroke-color($value, $map: null) {
+  stroke: color-value($value, $map);
+}
+
+@mixin fill-opacity($value) {
+  fill-opacity: $value;
+}

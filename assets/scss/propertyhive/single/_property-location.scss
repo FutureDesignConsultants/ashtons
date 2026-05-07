@@ -1,0 +1,47 @@
+.property-location {
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+
+  .property-location__map {
+    margin-top: 1rem;
+    z-index: 0;
+    height: 677px; // required
+    @include max-width(xlg) {
+      height: 500px; // required
+    }
+    @include max-width(sm) {
+      height: 300px;
+    }
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden; // keeps radius clean
+  }
+
+  .view-google {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 9999;
+    padding: 10px 17px;
+    span {
+      @include font-size-16;
+    }
+  }
+
+  .local-area {
+    margin-top: 1.5rem;
+    @include max-width(sm) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    p {
+      @include font-size-20;
+    }
+    .cta-button {
+      border-radius: 10px;
+      span {
+        @include font-size-16;
+      }
+    }
+  }
+}

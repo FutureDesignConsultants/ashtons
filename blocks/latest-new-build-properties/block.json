@@ -1,0 +1,15 @@
+{
+    "name": "acf/latest-new-build-properties",
+    "title": "Latest New Build Properties",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/latest-new-build-properties/latest-new-build-properties.php"
+    }
+}

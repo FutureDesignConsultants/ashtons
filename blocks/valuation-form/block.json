@@ -1,0 +1,15 @@
+{
+    "name": "acf/valuation-form",
+    "title": "Valuation Form",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/valuation-form/valuation-form.php"
+    }
+}

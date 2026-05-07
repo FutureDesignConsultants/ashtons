@@ -1,0 +1,33 @@
+.single-masthead {
+  height: auto;
+  @include flex(row, center, center);
+
+  .content {
+    text-align: center;
+    margin: auto;
+    @include min-width(md) {
+      max-width: 60%;
+    }
+    @include min-width(xlg) {
+      max-width: 45%;
+    }
+    ul,
+    li {
+      list-style: none;
+      padding: 0;
+    }
+    ul {
+      @include flex(row, center, center);
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    li {
+      @include font-family(primary);
+      @include font-size-base;
+      @include border-color(black);
+      @include border-radius;
+      max-width: fit-content;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

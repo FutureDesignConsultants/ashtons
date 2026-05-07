@@ -1,0 +1,15 @@
+.image-column-two {
+  .img-wrap {
+    height: 15rem;
+    img {
+      @include img-border-radius;
+    }
+    @include min-width(sm) {
+      height: 30rem;
+    }
+
+    @include min-width(xlg) {
+      height: 40rem;
+    }
+  }
+}

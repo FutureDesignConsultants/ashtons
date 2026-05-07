@@ -1,0 +1,156 @@
+// ----------------------------------------------
+// Flex utils
+// ----------------------------------------------
+
+@mixin respond($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+
+  @if $size {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found in \$breakpoints map.";
+  }
+}
+
+// Generate flex-direction utilities
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+// Justify content utilities
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+// Align items utilities ---
+.align-start {
+  align-items: flex-start;
+}
+.align-center {
+  align-items: center;
+}
+.align-end {
+  align-items: flex-end;
+}
+.align-stretch {
+  align-items: stretch;
+}
+.align-baseline {
+  align-items: baseline;
+}
+
+// ----------------------------------------------
+// Mixin to generate gap utilities for flex and grid
+// Usage: @include generate-gaps();
+// ----------------------------------------------
+@mixin generate-gaps() {
+  @each $key, $value in $gaps {
+    // Gap utility for flex-gap and grid-gap
+    .gap-#{$key} {
+      gap: $value;
+    }
+  }
+}
+
+// Generate gaps outside the mixin for default (mobile-first)
+@include generate-gaps();
+
+// ----------------------------------------------
+// Responsive utilities generation
+// Generates responsive flex-direction and gaps for each breakpoint
+// ----------------------------------------------
+@each $breakpoint in map-keys($breakpoints) {
+  @include respond($breakpoint) {
+    // Flex direction utilities
+    .#{$breakpoint}\:flex {
+      display: flex;
+    }
+    .#{$breakpoint}\:flex-row {
+      flex-direction: row;
+    }
+    .#{$breakpoint}\:flex-col {
+      flex-direction: column;
+    }
+    .#{$breakpoint}\:flex-wrap {
+      flex-wrap: wrap;
+    }
+    .#{$breakpoint}\:flex-nowrap {
+      flex-wrap: nowrap;
+    }
+
+    // Justify content utilities
+    .#{$breakpoint}\:justify-start {
+      justify-content: flex-start;
+    }
+    .#{$breakpoint}\:justify-center {
+      justify-content: center;
+    }
+    .#{$breakpoint}\:justify-end {
+      justify-content: flex-end;
+    }
+    .#{$breakpoint}\:justify-between {
+      justify-content: space-between;
+    }
+    .#{$breakpoint}\:justify-around {
+      justify-content: space-around;
+    }
+    .#{$breakpoint}\:justify-evenly {
+      justify-content: space-evenly;
+    }
+
+    // Align items utilities
+    .#{$breakpoint}\:align-start {
+      align-items: flex-start;
+    }
+    .#{$breakpoint}\:align-center {
+      align-items: center;
+    }
+    .#{$breakpoint}\:align-end {
+      align-items: flex-end;
+    }
+    .#{$breakpoint}\:align-stretch {
+      align-items: stretch;
+    }
+    .#{$breakpoint}\:align-baseline {
+      align-items: baseline;
+    }
+
+    // Responsive gaps
+    @each $key, $value in $gaps {
+      .#{$breakpoint}\:gap-#{$key} {
+        gap: $value !important;
+      }
+    }
+  }
+}

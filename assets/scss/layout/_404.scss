@@ -1,0 +1,35 @@
+.error-page {
+  min-height: calc(100dvh - var(--header-height, 100px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 10rem;
+
+  .wrap {
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    display: none;
+  }
+  p {
+    @include text-color(white);
+  }
+
+  svg {
+    @include max-width(xlg) {
+      width: 300px;
+      height: auto;
+    }
+    @include max-width(sm) {
+      width: 175px;
+    }
+  }
+}

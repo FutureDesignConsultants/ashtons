@@ -1,0 +1,257 @@
+.pre-launch-insta {
+}
+
+#sb_instagram {
+  padding-bottom: 20px !important;
+
+  @include min-width(md) {
+    padding-bottom: 40px !important;
+  }
+}
+
+.sbi_item {
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  .image-wrap {
+    position: relative;
+  }
+
+  #sb_instagram .sbi_photo_wrap,
+  .sbi_photo {
+    border-radius: 8px;
+
+    @include min-width(md) {
+      border-radius: 12px;
+    }
+  }
+
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 70%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    pointer-events: none;
+    z-index: 3;
+
+    @include min-width(md) {
+      border-radius: 12px;
+    }
+  }
+
+  .author-info {
+    position: absolute;
+    display: flex;
+    left: 4%;
+    bottom: 3%;
+    z-index: 3;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    pointer-events: none;
+
+    .sbi_header_img {
+      position: relative;
+      width: 35px;
+      height: 35px;
+      overflow: hidden;
+      -moz-border-radius: 40px;
+      -webkit-border-radius: 40px;
+      border-radius: 50%;
+
+      @include min-width(md) {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    p:first-child {
+      text-transform: capitalize;
+      @include area(400);
+      @include text-color(off-white);
+      @include font-size-18;
+    }
+
+    p {
+      line-height: normal;
+      @include area(300);
+      @include text-color(off-white);
+      @include font-size-16;
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+      display: block;
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+      opacity: 1 !important;
+
+      @include min-width(md) {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @include max-width(md) {
+      flex-direction: column;
+    }
+  }
+
+  img {
+    aspect-ratio: 340 / 425.2;
+  }
+
+  @include min-width(md) {
+    border-radius: 12px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+.sbi_load_btn {
+  padding: 16px 30px;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--Pink, #ff2e69);
+  color: var(--NEW-MAIN-GREY, #2d2d35);
+  font-family: "Area Normal";
+  font-size: 22px;
+  font-style: normal;
+  line-height: 90%;
+  margin-top: 4rem;
+  @include bg-color(pink);
+  @include font-size-26;
+  @include area(300);
+  @include text-color(dark-grey);
+  cursor: pointer;
+}
+
+// new
+
+.sbi_hover_top {
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 3;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.sbi_caption_wrap {
+  padding: 12px 0 !important;
+  text-align: left;
+}
+
+.sbi_hover_bottom {
+  display: none;
+}
+
+.sbi_link {
+  opacity: 1 !important;
+}
+
+#sb_instagram .sbi_photo_wrap,
+.sbi_inner_wrap {
+  border-radius: 12px;
+}
+
+.sbi_photo_wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 65%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pre-launch-insta .sbi_photo_wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.pre-launch-insta .sbi_link {
+  z-index: 3;
+}
+
+.sbi-theme:not(.sbi-modern, .sbi-overlap)#sb_instagram .sbi_hover_top {
+  left: 3%;
+  bottom: 3%;
+  color: #fff;
+  text-align: left !important;
+}
+
+#sb_instagram .sbi_link:hover .sbi_hover_top {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sbi-theme:not(.sbi-modern, .sbi-overlap)#sb_instagram .sbi_hover_top:before {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 35px;
+
+  @include min-width(md) {
+    width: 50px;
+    height: 50px;
+  }
+
+  border-radius: 50%;
+  background-image: url("/wp-content/uploads/sb-instagram-feed-images/sellingstocktonheath.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sbi-theme:not(.sbi-modern, .sbi-overlap)#sb_instagram .sbi_hover_top a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 1;
+  padding: 0;
+  width: fit-content;
+  text-transform: capitalize;
+  @include area(400);
+  @include text-color(off-white);
+  @include font-size-18;
+}
+
+.sbi_timeago {
+  line-height: normal;
+  @include area(300);
+  @include text-color(off-white);
+  @include font-size-16;
+}
+
+#sb_instagram .sbi_link .sbi_hover_bottom {
+  opacity: 1;
+}
+
+.sbi_link {
+  background: transparent !important;
+}

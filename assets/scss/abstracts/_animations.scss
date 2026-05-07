@@ -1,0 +1,73 @@
+// Hover Underline for Links
+
+a.underline {
+  text-decoration: none;
+  color: inherit;
+  display: inline;
+  position: relative;
+  width: fit-content;
+  @include font-size-x-small;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    @include bg-color(black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    opacity: 1;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.mask-text {
+  display: block;
+
+  .line-mask {
+    display: block;
+    overflow: hidden; // this masks the inner span
+  }
+
+  .line-mask > span {
+    display: inline-block;
+    transform-origin: bottom center;
+    will-change: transform;
+  }
+}
+
+.item {
+  width: 60vmin;
+  height: 60vmin;
+  clip-path: url(#clip-path1);
+  background-color: red;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+.item-2 {
+  clip-path: url(#clip-path2);
+}
+
+/* initial state BEFORE JS runs */
+[data-anim="fade"] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+html:not(.anim-ready) .toggle-btn[data-anim="fade"] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(var(--fade-y, 0px)) !important;
+}
+
+/* if you use y, it will be overwritten by GSAP anyway */

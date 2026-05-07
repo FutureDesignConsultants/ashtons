@@ -1,0 +1,81 @@
+.pre-launch-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 200px;
+  @include max-width(sm) {
+    padding-top: 167px;
+  }
+
+  .background-svg {
+    position: absolute;
+    //   top: -50%;
+    bottom: 40%;
+    transform: translateY(50%); // push it upward
+    right: 0%;
+    pointer-events: none;
+    z-index: 1;
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 10%,
+      rgba(0, 0, 0, 0.5) 18%,
+      black 30%,
+      black 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.15) 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 10%,
+      rgba(0, 0, 0, 0.5) 18%,
+      black 30%,
+      black 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.15) 90%,
+      transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @include min-width(md) {
+      bottom: 10%;
+    }
+  }
+
+  .title {
+    grid-column: 1 / 6;
+    @include max-width(sm) {
+      grid-column: 1 / -1;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+      @include text-color(pink);
+      @include font-size-100;
+      line-height: 1;
+      //margin-bottom: -20px;
+      line-height: 85%;
+      letter-spacing: -0.75px;
+      @include din(700);
+    }
+
+    p {
+      position: relative;
+      z-index: 2;
+      @include text-color(white);
+      @include font-size-18;
+      font-weight: 300;
+      @include area(300);
+    }
+  }
+}

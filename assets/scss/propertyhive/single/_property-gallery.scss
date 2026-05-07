@@ -1,0 +1,753 @@
+.property-gallery {
+  position: relative;
+  height: fit-content;
+  $r: 12px;
+
+  .swiper-pagination {
+    display: none;
+  }
+
+  &-swiper {
+    width: 100%;
+    // height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    will-change: transform;
+    transform: translate3d(0, 0, 0) scale(1.16); // tiny scale avoids edges showing
+    transition: transform 0.08s linear;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+
+    svg {
+    }
+
+    // optional subtle hover feel
+    transition: opacity 0.25s ease;
+
+    &--prev {
+      left: -2rem;
+      @include max-width(sm) {
+        left: 1cqh;
+      }
+    }
+
+    &--next {
+      right: -2rem;
+      @include max-width(sm) {
+        right: 1rem;
+      }
+    }
+
+    // smooth SVG animation like your other buttons
+    svg {
+      circle,
+      path {
+        transition:
+          fill 0.25s ease,
+          stroke 0.25s ease;
+      }
+    }
+
+    &:hover svg {
+      circle {
+        fill: #ff2e69; // adjust to your brand token if needed
+      }
+
+      path {
+        stroke: #ffffff;
+      }
+    }
+  }
+
+  .swiper-slide {
+    overflow: hidden;
+    border-radius: 12px;
+    img {
+      border-radius: 12px;
+    }
+  }
+
+  &__pagination {
+    bottom: 1rem !important; // override swiper inline styles if needed
+  }
+
+  .swiper-buttons {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    @include max-width(sm) {
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      justify-content: space-between;
+      width: max-content;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #d7d7d7;
+      position: relative;
+      bottom: 0rem;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+    gap: 1rem;
+    z-index: 2;
+  }
+
+  @include max-width(sm) {
+    button {
+      svg {
+        width: 50px;
+      }
+    }
+  }
+
+  .back-search-mobile {
+    border-bottom: 0px !important;
+
+    @include min-width(sm) {
+      display: none;
+    }
+    svg {
+      width: 32px !important;
+    }
+  }
+
+  .back-search {
+    background: none;
+    border: 0;
+    text-decoration: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #d7d7d7;
+    width: 100%;
+
+    .search-link {
+      text-decoration: none;
+    }
+
+    .search-link svg circle,
+    .search-link svg path {
+      transition: all 0.3s ease;
+    }
+
+    .search-link:hover svg circle {
+      fill: #ff2e69;
+    }
+
+    .search-link:hover svg path {
+      stroke: #ffffff;
+    }
+
+    .share {
+      cursor: pointer;
+    }
+
+    .share .share-icon path {
+      transition: fill 0.3s ease;
+    }
+
+    .share:hover .share-icon path {
+      fill: #ff2e69;
+    }
+
+    span {
+      @include font-size-16;
+      @include text-color(dark-grey);
+    }
+
+    circle,
+    path {
+      transition:
+        fill 0.2s ease,
+        stroke 0.2s ease;
+    }
+  }
+
+  .slider-cta {
+    display: flex;
+    @include max-width(sm) {
+      background: none !important;
+      border: none !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    &.gallery-btn {
+      @include max-width(sm) {
+        display: none;
+      }
+    }
+
+    gap: 0.5rem;
+    align-items: center;
+    background: #faf8f480;
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    @include border-color(dark-grey);
+    max-width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    span {
+      @include area;
+      font-weight: 400;
+      @include font-size-18;
+      @include text-color(dark-grey);
+    }
+    &:hover {
+      @include bg-color(white);
+    }
+  }
+}
+
+/* baseline so it never flashes multiple slides */
+.property-gallery-swiper {
+  overflow: hidden;
+  transform: translateZ(0);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.property-gallery-swiper .swiper-wrapper {
+  display: flex; // (Swiper CSS already does this, but safe)
+}
+
+.property-gallery-swiper .swiper-slide {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+// -----------------------------
+// NEW / UPDATED: MODAL THUMBS
+// -----------------------------
+.property-gallery-modal-thumbs {
+  margin-top: 12px;
+}
+
+.property-gallery-modal-thumbs .swiper-slide {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.property-gallery-modal-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.property-gallery-modal__thumb {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+// -----------------------------
+// YOUR EXISTING MODAL STYLES
+// (retained) + grid additions
+// -----------------------------
+.swiper-slide {
+  aspect-ratio: 1.58 / 1;
+}
+.modal__footer {
+  grid-column: span 12;
+}
+
+.property-gallery-modal-swiper,
+.property-gallery-modal-swiper.property-gallery-modal-swiper,
+.property-gallery-modal .property-gallery-modal-swiper {
+  grid-row: 1;
+  min-height: 0;
+}
+.property-gallery-modal {
+  position: fixed;
+
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  max-height: none;
+  height: 100dvh;
+
+  .property-gallery-modal__panel {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    max-width: 125rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 7rem;
+    padding-left: clamp(1.5rem, 1.05rem + 1.92vw, 4.05rem);
+    padding-right: clamp(1.5rem, 1.05rem + 1.92vw, 4.05rem);
+    z-index: 1;
+    overflow: hidden;
+    @include bg-color(off-white);
+
+    @include max-width(sm) {
+      padding-top: 4.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      height: auto;
+      margin-top: 4rem;
+    }
+  }
+
+  .property-gallery-modal__layout--fourup {
+    flex: 1;
+    min-height: 0;
+    // you already have display:grid + columns; keep them
+    // add rows so the footer always has its own space
+    grid-template-rows: 1fr auto;
+
+    // allow scrolling of the "content row" if short screens
+    overflow: hidden;
+  }
+
+  .modal__footer {
+    grid-row: 2;
+    grid-column: 1 / -1;
+
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+
+    // give it its own background so it doesn't look transparent over images
+    @include bg-color(off-white);
+
+    // add safe spacing for small laptop + mobile browser bars
+    // padding: 1rem 0 calc(1rem + env(safe-area-inset-bottom));
+  }
+
+  // MODAL NAV (prev/next) — replicate same hover as listing nav
+  .property-gallery-modal__nav {
+    // optional: keep it consistent for keyboard users too
+
+    &:hover,
+    &:focus-visible {
+      svg {
+        circle {
+          fill: #ff2e69; // your brand token
+          fill-opacity: 1; // override the 0.75 if you want full strength on hover
+        }
+
+        path {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+
+  .property-gallery-modal {
+    &__layout--fourup {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      height: 100%;
+      width: 100%;
+      min-height: 0;
+      box-sizing: border-box;
+    }
+
+    .property-gallery-modal__side,
+    .property-gallery-modal-swiper {
+      min-height: 0; // key so they don't force overflow
+    }
+
+    // Left big
+    &-swiper {
+      height: 100%;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      grid-column: 4 / 13;
+      @include max-width(sm) {
+        grid-column: 1 / -1;
+      }
+    }
+
+    // Right sidebar
+    &__side {
+      display: grid;
+      grid-column: span 3;
+      gap: 12px;
+      height: 100%;
+      align-content: stretch;
+      grid-row: 1;
+      min-height: 0;
+      overflow: auto;
+    }
+
+    &__side-item {
+      border: 0;
+      padding: 0;
+      background: none;
+      cursor: pointer;
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0.75;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        opacity: 1;
+        // transform: translateY(-1px);
+      }
+
+      &.is-active {
+        opacity: 1;
+        outline: 2px solid rgba(0, 0, 0, 0.2);
+        outline-offset: 2px;
+      }
+    }
+
+    &__side-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; // sidebar crop like a card
+    }
+
+    // Mobile: stack sidebar under main (optional)
+    @include max-width(sm) {
+      &__layout--fourup {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+      }
+
+      &__side {
+        grid-template-rows: none;
+        grid-template-columns: repeat(3, 1fr);
+        height: auto;
+        display: none;
+      }
+
+      &__side-item {
+        aspect-ratio: 16 / 10;
+      }
+    }
+  }
+
+  .property-gallery-modal__close {
+    background: 0;
+    border: 0;
+  }
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    @include bg-color(off-white);
+  }
+
+  // Panel is the positioning context for nav/pagination
+  &__panel {
+    position: relative;
+    width: 100dvw;
+    // height: 100dvh;
+    padding-left: clamp(1.5rem, 1.05rem + 1.92vw, 4.05rem);
+    padding-right: clamp(1.5rem, 1.05rem + 1.92vw, 4.05rem);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 125rem;
+    height: 100dvh;
+    @include max-width(sm) {
+      height: 100dvh;
+    }
+    padding-top: 7rem;
+    max-height: 100dvh;
+    z-index: 1;
+    overflow: auto;
+    @include bg-color(off-white);
+  }
+
+  .property-gallery-modal__close {
+    position: absolute;
+    top: 10rem;
+    right: 6rem;
+    @include max-width(sm) {
+      top: 1rem;
+      right: 2rem;
+    }
+    z-index: 30;
+    border: 0;
+    background: 0;
+    width: 44px;
+    height: 44px;
+    @include max-width(sm) {
+      width: 33px;
+      height: 33px;
+    }
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .modal__footer {
+    .back {
+      appearance: none;
+      -webkit-appearance: none;
+      background: none;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      p {
+        margin: 0;
+        color: inherit;
+        @include font-size-16;
+      }
+
+      svg {
+        flex-shrink: 0;
+        width: auto;
+
+        circle,
+        path {
+          transition:
+            fill 0.2s ease,
+            stroke 0.2s ease;
+        }
+      }
+
+      &:visited,
+      &:active,
+      &:focus,
+      &:focus-visible {
+        color: inherit;
+      }
+
+      &:hover {
+        svg {
+          circle {
+            fill: #ff2e69;
+          }
+
+          path {
+            stroke: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  .property-gallery-modal__count {
+    @include area;
+    @include text-color(dark-grey);
+    @include font-size-18;
+  }
+
+  // ---------------------------------------
+  // NEW: GRID LAYOUT INSIDE MODAL PANEL
+  // thumbs left, main right (desktop)
+  // stacked (mobile)
+  // ---------------------------------------
+  &__layout {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    // grid-template-columns: clamp(180px, 22vw, 320px) 1fr;
+    gap: 16px;
+    align-items: stretch;
+
+    // keep everything inside the panel nicely padded
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  // Thumbs swiper in the left rail
+  &-thumbs {
+    height: 100%;
+    width: 100%;
+    margin-top: 0; // overrides the 12px for desktop grid usage
+    overflow: hidden;
+    border-radius: 12px;
+
+    // a little inner breathing room so thumbs don't touch edges
+    padding: 8px;
+    box-sizing: border-box;
+
+    // Vertical rail: allow it to scroll nicely
+    .swiper-wrapper {
+      height: 100%;
+    }
+
+    .swiper-slide {
+      // ensure consistent thumb sizing in vertical rail
+      height: auto;
+      aspect-ratio: 1.58 / 1;
+    }
+
+    // Make the thumbs feel like tiles
+    .property-gallery-modal__thumb {
+      height: auto;
+      aspect-ratio: 16 / 10;
+      border-radius: 10px;
+    }
+  }
+
+  // Main Swiper fills the remaining space
+  &-swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  // Ensure slides don't “sit above” nav
+  .swiper-wrapper,
+  .swiper-slide {
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // <— key for full-screen galleries
+    display: block;
+  }
+
+  // NAV always on top
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    border: 0;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+
+    // make taps easier on mobile
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+
+    &--prev {
+      left: 1rem;
+    }
+    &--next {
+      right: 1rem;
+    }
+
+    // optional hover/focus visibility
+    opacity: 0.95;
+    transition: opacity 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+    }
+
+    // ensure svg doesn't block clicks weirdly
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  // Pagination always visible at bottom
+  &__pagination {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.25rem;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+  }
+
+  // ---------------------------------------
+  // Responsive: stack thumbs under main
+  // ---------------------------------------
+
+  @include max-width(sm) {
+    &__layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      padding: 0;
+    }
+
+    &-swiper {
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    &-swiper .swiper-wrapper {
+      height: auto;
+    }
+
+    &-swiper .swiper-slide {
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    &-thumbs {
+      height: auto;
+      padding: 0;
+      border-radius: 0;
+      overflow: visible;
+      margin-top: 12px;
+
+      .swiper-wrapper,
+      .swiper-slide {
+        height: auto;
+      }
+
+      .property-gallery-modal__thumb {
+        height: 70px;
+        aspect-ratio: auto;
+        border-radius: 8px;
+      }
+    }
+
+    &__nav {
+      width: 52px;
+      height: 52px;
+
+      &--prev {
+        left: 0.5rem;
+      }
+
+      &--next {
+        right: 0.5rem;
+      }
+    }
+
+    &__pagination {
+      bottom: 0.75rem;
+    }
+  }
+}
+
+.is-locked {
+  overflow: hidden;
+}

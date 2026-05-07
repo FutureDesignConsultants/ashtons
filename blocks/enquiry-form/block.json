@@ -1,0 +1,15 @@
+{
+    "name": "acf/enquiry-form",
+    "title": "Enquiry Form",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/enquiry-form/enquiry-form.php"
+    }
+}

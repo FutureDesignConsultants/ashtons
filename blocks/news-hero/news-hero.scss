@@ -1,0 +1,65 @@
+.news-hero {
+  position: relative;
+  overflow: hidden;
+
+  .background-svg {
+    position: absolute;
+    //   top: -50%;
+    bottom: 40%;
+    transform: translateY(50%); // push it upward
+    right: 0%;
+    pointer-events: none;
+    z-index: 1;
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 10%,
+      rgba(0, 0, 0, 0.5) 18%,
+      black 30%,
+      black 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.15) 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 10%,
+      rgba(0, 0, 0, 0.5) 18%,
+      black 30%,
+      black 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.15) 90%,
+      transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @include min-width(sm) {
+      bottom: -10%;
+    }
+  }
+
+  h1 {
+    position: relative;
+    z-index: 2;
+    line-height: 85%;
+    @include text-color(green);
+    @include font-size-100;
+  }
+
+  p {
+    position: relative;
+    z-index: 2;
+    @include text-color(white);
+    @include font-size-18;
+    font-weight: 300;
+  }
+}

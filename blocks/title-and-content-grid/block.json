@@ -1,0 +1,15 @@
+{
+    "name": "acf/title-and-content-grid",
+    "title": "Title and Content Grid",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/title-and-content-grid/title-and-content-grid.php"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "acf/why-sell-with-ashtons-hero",
+    "title": "Why sell with ashtons hero",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/why-sell-with-ashtons-hero/why-sell-with-ashtons-hero.php"
+    }
+}

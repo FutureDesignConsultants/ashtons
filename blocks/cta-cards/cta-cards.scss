@@ -1,0 +1,400 @@
+.cta-cards {
+  .card {
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    @include max-width(sm) {
+      grid-column: span 12;
+      margin-bottom: 1rem;
+      padding: 2rem 1.5rem;
+    }
+  }
+  h3 {
+    @include font-size-50;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+    p {
+      @include font-size-18;
+    }
+  }
+
+  .cta-button {
+    span {
+      @include font-size-18;
+    }
+    @include max-width(md) {
+      max-width: fit-content;
+      margin-top: 2rem;
+    }
+  }
+
+  .card--branch-finder {
+    h3 {
+      @include max-width(lg) {
+        max-width: 70% !important;
+      }
+    }
+  }
+
+  .card--exclusive-access {
+    .cta-button {
+      max-height: fit-content;
+    }
+    .title-wrap {
+      svg {
+        @include max-width(lg) {
+          width: 50px !important;
+        }
+      }
+      h3 {
+        @include max-width(lg) {
+          max-width: 70% !important;
+        }
+      }
+    }
+  }
+
+  .card--investments {
+    h3 {
+      @include max-width(lg) {
+        max-width: 70% !important;
+      }
+    }
+    svg {
+      width: 71px !important;
+      right: -127px !important;
+      height: 51px;
+
+      @include min-width(xlg) {
+        height: 51px;
+      }
+      top: -41px !important;
+
+      @include max-width(xlg) {
+        top: -41px;
+      }
+    }
+  }
+
+  .card--landlord-cta {
+    .title-wrap {
+      display: flex;
+      gap: 1rem;
+      svg {
+        width: 60px;
+        height: auto;
+        margin-top: -10px;
+        @include max-width(sm) {
+          width: 45px !important;
+        }
+      }
+    }
+  }
+
+  .card--exclusive-access {
+    .title-wrap {
+      display: flex;
+      gap: 1rem;
+      svg {
+        width: 41px;
+        margin-top: -11px;
+        @include max-width(sm) {
+          width: 31px !important;
+        }
+      }
+    }
+  }
+
+  .card--area-guide-cta {
+    .title-wrap {
+      display: flex;
+      gap: 1rem;
+      svg {
+        position: relative;
+        height: auto;
+        width: 80px;
+        margin-top: -21px;
+        @include max-width(sm) {
+          width: 60px !important;
+          margin-top: -15px;
+        }
+      }
+    }
+  }
+
+  .card--area-guide-cta svg {
+    // width: 100px !important;
+    // right: -130px !important;
+    // top: -53px !important;
+    // @include max-width(lg) {
+    //   width: 80px !important;
+    //   left: 261px;
+    // }
+
+    // @include max-width(sm) {
+    //   width: 80px !important;
+    //   left: 219px;
+    // }
+  }
+
+  .card--area-guide-cta,
+  .card--investments {
+    // svg {
+    //   width: 83px;
+    //   position: absolute;
+    //   right: -98px;
+    //   top: -49px;
+    //   @include min-width(xlg) {
+    //     width: 134px;
+    //     position: absolute;
+    //     right: -180px;
+    //     top: -31px;
+    //   }
+    // }
+    .cta-button {
+      padding-right: 1.75rem !important;
+      &::after {
+        @include bg-color(green);
+      }
+    }
+    &.bg-green {
+      .cta-button {
+        &::before {
+          background: #ff8d28 !important;
+        }
+      }
+    }
+  }
+
+  .card--exclusive-access,
+  .card--landlord-cta,
+  .card--area-guide-cta,
+  .card--investments,
+  .card--commercial-property {
+    svg {
+      width: 60px;
+    }
+    .title-wrap {
+      max-width: fit-content;
+
+      h3 {
+        position: relative;
+        max-width: fit-content;
+        line-height: 1;
+        @include max-width(sm) {
+          width: 100%;
+        }
+      }
+      //   svg {
+      //     // position: absolute;
+      //     right: -80px;
+      //     top: -12px;
+      //     @include max-width(lg) {
+      //       width: 76px;
+      //     }
+      //   }
+    }
+    .cta-button {
+      svg {
+        transform: translateX(-14px);
+      }
+      @include max-width(xlg) {
+        max-height: fit-content;
+        max-width: fit-content;
+      }
+      padding-right: 0;
+      padding-block: 16px;
+      @include text-color(white);
+      &:before {
+        @include bg-color(green);
+      }
+      &:hover {
+        @include bg-color(green);
+        @include text-color(dark-grey);
+      }
+      &:before {
+        @include bg-color(green);
+      }
+      span {
+        @include font-size-22;
+      }
+    }
+    .card__text {
+      max-width: 55%;
+      @include max-width(sm) {
+        max-width: 100%;
+      }
+      p {
+        max-width: 31ch;
+      }
+    }
+  }
+
+  .card--investments {
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .card--commercial-property {
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      svg {
+        @include max-width(sm) {
+          width: 45px !important;
+          margin-top: -12px;
+        }
+      }
+
+      //   svg {
+      //     width: 80px !important;
+      //     right: -7rem !important;
+      //     top: -2rem !important;
+      //     @media (min-width: 1280px) and (max-width: 1439px) {
+      //       width: 54px !important;
+      //       right: -5rem !important;
+      //     }
+      //     @include max-width(sm) {
+      //       width: 67px !important;
+      //       right: -5.5rem !important;
+      //       top: 0rem !important;
+      //     }
+      //   }
+      @include max-width(lg) {
+        h3 {
+          max-width: 70%;
+        }
+      }
+    }
+  }
+
+  .card--mortgages {
+    .card__text {
+      max-width: 50%;
+    }
+    .cta-button {
+      max-height: fit-content;
+      text-align: center;
+      span {
+        @include font-size-22;
+      }
+    }
+  }
+
+  .card--branch-finder {
+    .cta-button {
+      span {
+        @include font-size-22;
+      }
+    }
+    h3 {
+      @include text-color(green);
+      max-width: 80%;
+      line-height: 1;
+    }
+
+    @include max-width(sm) {
+      max-width: 100%;
+    }
+
+    position: relative;
+
+    img {
+      width: 164px;
+      right: 2rem;
+      top: 42px;
+      position: absolute;
+      height: auto;
+      @include max-width(xlg) {
+        width: 136px;
+        right: 1rem;
+      }
+      @include max-width(lg) {
+        top: 21px;
+        width: 88px;
+      }
+      @include max-width(md) {
+      }
+    }
+  }
+
+  .branch-finder-form {
+    button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      svg rect {
+        transition: fill 0.3s ease;
+      }
+
+      svg path {
+        transition: stroke 0.3s ease;
+      }
+
+      &:hover svg rect {
+        fill: #ff2e69;
+      }
+
+      &:hover svg path {
+        stroke: #ffffff;
+      }
+    }
+
+    .branch-finder-form__field {
+      margin-top: 1.5rem;
+      @include max-width(sm) {
+        margin-top: 0rem;
+      }
+      display: flex;
+      gap: 1rem;
+      @include max-width(xlg) {
+        gap: 0.5rem;
+      }
+      input {
+        background: transparent;
+        max-height: 49px;
+        border: 1px solid rgb(193, 212, 47);
+        border-radius: 10px;
+        width: 350px;
+        @include max-width(xlg) {
+          width: 250px;
+        }
+        padding-left: 1rem;
+        padding-right: 1rem;
+        @include area;
+        @include font-size-16;
+        @include text-color(off-white);
+        &::placeholder {
+          @include text-color(off-white);
+        }
+        &:focus-within {
+          background: #57575c;
+        }
+        &:focus {
+          outline: none; // removes the blue focus ring
+        }
+      }
+    }
+  }
+  .card--landlord-cta {
+    @include bg-color(orange);
+    .title-wrap {
+      svg {
+        width: 80px;
+        right: -107px;
+        top: -44px;
+        @include max-width(sm) {
+          top: -44px !important;
+          width: 80px;
+          right: -100px;
+        }
+      }
+    }
+  }
+}

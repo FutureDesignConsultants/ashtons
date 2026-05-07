@@ -1,0 +1,15 @@
+{
+    "name": "acf/news-hero",
+    "title": "News Hero",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/news-hero/news-hero.php"
+    }
+}

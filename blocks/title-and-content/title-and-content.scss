@@ -1,0 +1,12 @@
+.title-and-content {
+  h2 {
+    @include font-size-base;
+  }
+  h3 {
+    @include font-size-large;
+  }
+
+  .secondary {
+    @include font-size-x-small;
+  }
+}

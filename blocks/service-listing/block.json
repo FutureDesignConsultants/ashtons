@@ -1,0 +1,15 @@
+{
+    "name": "acf/service-listing",
+    "title": "Service Listing",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/service-listing/service-listing.php"
+    }
+}

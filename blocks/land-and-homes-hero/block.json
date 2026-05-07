@@ -1,0 +1,15 @@
+{
+    "name": "acf/land-and-homes-hero",
+    "title": "Land and Homes Hero",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/land-and-homes-hero/land-and-homes-hero.php"
+    }
+}

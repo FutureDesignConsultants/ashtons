@@ -1,0 +1,15 @@
+{
+    "name": "acf/card-slider",
+    "title": "Card Slider",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/card-slider/card-slider.php"
+    }
+}

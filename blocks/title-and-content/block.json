@@ -1,0 +1,15 @@
+{
+    "name": "acf/title-and-content",
+    "title": "Title and Content",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/title-and-content/title-and-content.php"
+    }
+}

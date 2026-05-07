@@ -1,0 +1,146 @@
+.branch-listing-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 200px;
+
+  .background-svg {
+    position: absolute;
+    //   top: -50%;
+    bottom: 40%;
+    transform: translateY(50%); // push it upward
+    right: 0%;
+    pointer-events: none;
+    z-index: 1;
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 10%,
+      rgba(0, 0, 0, 0.5) 18%,
+      black 30%,
+      black 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.15) 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 10%,
+      rgba(0, 0, 0, 0.5) 18%,
+      black 30%,
+      black 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.15) 90%,
+      transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @include min-width(md) {
+      bottom: 10%;
+    }
+  }
+
+  h1 {
+    position: relative;
+    z-index: 2;
+    @include text-color(green);
+    @include font-size-80;
+    line-height: 1;
+    margin-bottom: -20px;
+  }
+
+  p {
+    position: relative;
+    z-index: 2;
+    @include text-color(white);
+    @include font-size-18;
+    font-weight: 300;
+  }
+
+  .form-wrap {
+    grid-column: 1 / -1;
+    width: 100%;
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .inner-form {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      input {
+        border-radius: 10px;
+        border: 1.5px solid #c1d42f;
+        padding: 1rem 0.75rem;
+        width: 100%;
+        background: transparent;
+        line-height: normal;
+        @include text-color(white);
+        @include area(400);
+        @include font-size-18;
+      }
+
+      button {
+        display: flex;
+        width: 54px;
+        height: 54px;
+        padding: 30px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        @include bg-color(green);
+        cursor: pointer;
+
+        svg {
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    @include min-width(md) {
+      grid-column: 1 / 7;
+      width: max-content;
+    }
+  }
+
+  .right {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 100%;
+    margin-top: 0.5rem;
+
+    .cta-button {
+      flex-shrink: 0;
+    }
+
+    @include max-width(md) {
+      .flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @include min-width(md) {
+      grid-column: 8 / -1;
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+  }
+
+  @include min-width(md) {
+    padding-top: 250px;
+  }
+}

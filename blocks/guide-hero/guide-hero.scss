@@ -1,0 +1,174 @@
+.guide-hero {
+  position: relative;
+  height: clamp(243px, 40dvh, 760px);
+  padding-top: 9rem;
+  overflow: hidden;
+  padding-bottom: 0;
+  @media (max-height: 800px) {
+    height: clamp(180px, 55dvh, 760px);
+  }
+
+  //   @media (max-height: 1100px) {
+  //     height: 40dvh;
+  //   }
+
+  @include max-width(sm) {
+    // min-height: 320px;
+    padding-bottom: 0rem;
+    height: clamp(243px, 30dvh, 760px);
+  }
+
+  .guide-hero__title--area {
+    margin-top: 18px;
+  }
+
+  .wrap,
+  .guide-hero__inner {
+    height: 100%;
+  }
+
+  .guide-hero__inner {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    // @include max-width(sm) {
+    //   flex-direction: column;
+    //   align-items: flex-start;
+    //   gap: 2rem;
+    //   justify-content: flex-start;
+    // }
+  }
+
+  .guide-hero__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .guide-hero__inner--buyers {
+    .guide-hero__icon {
+      max-height: 156px;
+    }
+  }
+
+  .guide-hero__icon {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    height: 205px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    @include max-width(xlg) {
+      max-height: 165px;
+      margin-top: -20px;
+    }
+
+    @include max-width(md) {
+      height: 150px;
+    }
+  }
+
+  .guide-hero__icon-image {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .buyer-icon,
+  .tenant-icon,
+  .area-icon {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .buyer-icon,
+  .tenant-icon {
+    width: auto;
+  }
+
+  .hero-ribbon {
+    position: absolute;
+    right: 0;
+    top: 6rem;
+    z-index: 1;
+    pointer-events: none;
+
+    @include max-width(xlg) {
+      width: 670px;
+      top: 4rem;
+    }
+
+    @include max-width(md) {
+      width: 470px;
+      top: 2rem;
+    }
+
+    @include max-width(sm) {
+      top: 8rem;
+    }
+  }
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      @include din;
+      @include font-size-100;
+      line-height: 0.9;
+    }
+  }
+
+  &.guide-hero--area {
+    padding-bottom: 1.25rem !important;
+
+    @include max-width(sm) {
+      padding-top: 6.75rem;
+
+      h1 {
+        margin-top: 1.25rem;
+      }
+    }
+
+    .guide-hero__inner--area {
+      gap: 0;
+      justify-content: space-between;
+    }
+
+    .guide-hero__content {
+      @include max-width(sm) {
+        padding-bottom: 1rem;
+      }
+    }
+
+    .guide-hero__icon {
+      height: 282px;
+
+      @include max-width(xlg) {
+        height: 220px;
+      }
+
+      @include max-width(md) {
+        height: 160px;
+      }
+
+      @include max-width(sm) {
+        height: 120px;
+      }
+    }
+
+    .area-icon {
+      height: 100%;
+      width: auto;
+      margin-right: 10rem;
+
+      @include max-width(sm) {
+        margin-right: 0;
+      }
+    }
+  }
+}

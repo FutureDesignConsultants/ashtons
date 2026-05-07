@@ -1,0 +1,10 @@
+.image-content {
+  p {
+    @include font-size-medium;
+  }
+  .img-wrap {
+    img {
+      @include img-border-radius;
+    }
+  }
+}

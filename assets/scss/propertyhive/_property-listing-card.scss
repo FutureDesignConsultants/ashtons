@@ -1,0 +1,571 @@
+.propertyhive-info.no-results-message {
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.ph-results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 64px 32px;
+  margin-bottom: 4rem;
+  padding-left: 0;
+
+  @include max-width(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include max-width(sm) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px 32px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  // ✅ critical for grid children w/ swiper
+  > li {
+    min-width: 0;
+  }
+
+  ul,
+  li {
+    margin: 0;
+    gap: 0;
+  }
+
+  .mega-card {
+    display: block;
+    text-decoration: none;
+    @include text-color(white);
+    min-width: 0;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+    animation: cardIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes cardIn {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /**
+   * ✅ FULL CARD LINK OVERLAY
+   * Sits above all normal content so the whole card navigates,
+   * but BELOW the next/prev buttons.
+   */
+  .mega-card__whole-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 3;
+    text-decoration: none;
+    pointer-events: none !important;
+  }
+
+  /**
+   * ✅ NAV BUTTONS MUST ALWAYS WIN
+   * Put these above the overlay link.
+   */
+  .mega-card__nav {
+    position: absolute;
+    z-index: 6; // higher than .mega-card__whole-link
+    pointer-events: auto;
+    transition: transform 0.2s ease;
+    circle {
+      transition: all 0.3s;
+    }
+    &:hover {
+      circle {
+        fill: #c1d42f;
+      }
+    }
+  }
+
+  /**
+   * ✅ IMPORTANT: Prevent Swiper/image layer from stealing clicks.
+   * This ensures clicks go to the overlay <a>, except the buttons.
+   */
+  .mega-card-swiper,
+  .mega-card-swiper * {
+    pointer-events: none;
+  }
+
+  .mega-card__media,
+  .mega-card__body {
+    position: relative;
+    z-index: 0;
+  }
+
+  .mega-card__media {
+    aspect-ratio: 278.1475 / 225.8557;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    cursor: pointer;
+    pointer-events: auto;
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 4; // ABOVE the overlay link (3)
+      pointer-events: auto; // IMPORTANT: captures clicks
+      background: transparent;
+    }
+
+    .mega-card__tag {
+      position: absolute;
+      z-index: 2; // visual only (clicks still go to overlay)
+      left: 0.5rem;
+      border-radius: 100px;
+      top: 0.5rem;
+      padding: 0.65rem 1.15rem;
+      @include font-size-16;
+
+      &.sell {
+        @include bg-color(pink);
+      }
+      &.rent {
+        @include bg-color(pink);
+      }
+    }
+
+    // ✅ Swiper fills media box (visual layer only; clicks disabled above)
+    .mega-card-swiper {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      z-index: 1;
+      position: relative;
+    }
+
+    // ✅ Prevent wrapper expansion / layout blowups
+    .mega-card-swiper .swiper-wrapper {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+    }
+
+    // ✅ Override Swiper's inline widths if it mis-measures
+    .mega-card-swiper .swiper-slide {
+      width: 100% !important;
+      flex: 0 0 100% !important;
+      max-width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    // ✅ Images inside slides
+    .mega-card__img,
+    .mega-card-swiper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+      transform: scale(1);
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    // ✅ Nav buttons (your original styling preserved)
+    .mega-card__nav {
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 35px;
+      height: 35px;
+      border-radius: 999px;
+
+      display: grid;
+      place-items: center;
+
+      cursor: pointer;
+      border: 0;
+      padding: 0;
+
+      background: rgba(250, 248, 244, 0.75);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+
+      transition:
+        transform 0.2s ease,
+        opacity 0.25s ease;
+    }
+
+    .mega-card__nav--prev {
+      left: 8px;
+    }
+
+    .mega-card__nav--next {
+      right: 8px;
+    }
+
+    .mega-card__nav svg {
+      display: block;
+    }
+
+    // ✅ Pagination visible but NOT clickable (since only arrows should control slider)
+    .swiper-pagination {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    // ✅ Your existing "View" overlay (visual only)
+    &::after {
+      content: "View";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      padding-block: 1rem;
+      text-align: center;
+
+      @include bg-color(green);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      @include text-color(dark-grey);
+      @include font-size-16;
+      line-height: 100%;
+
+      transform: translateY(110%);
+      opacity: 0;
+
+      transition:
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.25s ease;
+
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+
+  .mega-card:hover .mega-card__media img,
+  .mega-card:focus-visible .mega-card__media img {
+    transform: scale(1);
+  }
+
+  .mega-card:hover .mega-card__media::after,
+  .mega-card:focus-visible .mega-card__media::after {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mega-card__body {
+    margin-top: 1.15rem;
+    position: relative;
+    z-index: 0; // body is visually under the overlay link; overlay captures clicks
+    .commercial-price,
+    .commercial-rent {
+      @include ivy;
+      font-weight: 600;
+      @include font-size-22;
+    }
+  }
+
+  .mega-card__price {
+    @include ivy;
+    @include font-size-22;
+    font-weight: 600;
+  }
+
+  .mega-card__title,
+  .mega-card__beds {
+    font-weight: 300;
+    @include font-size-16;
+  }
+}
+
+#ph-search-pagination {
+  border-top: 1px solid #d7d7d7;
+  padding-top: 2rem;
+  margin-bottom: 4rem;
+
+  .propertyhive-pagination__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-numbers > li {
+    display: none;
+  }
+
+  .page-numbers.is-disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .page-numbers > li:has(.prev),
+  .page-numbers > li:has(.next) {
+    display: block;
+  }
+
+  .propertyhive-pagination__prev a,
+  .propertyhive-pagination__next a,
+  .propertyhive-pagination__prev .page-numbers,
+  .propertyhive-pagination__next .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      display: block; // removes inline jitter
+      overflow: visible;
+      transform: translateZ(0); // nudge GPU
+      @include max-width(sm) {
+        width: 40px;
+      }
+    }
+
+    // set explicit defaults (important for smooth transitions)
+    circle {
+      fill: transparent;
+    }
+    path {
+      stroke: #2d2d35;
+    }
+
+    circle {
+      transition: fill 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    path {
+      transition:
+        stroke 300ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      transform: translateX(0);
+      transform-origin: 50% 50%;
+    }
+
+    &:hover svg circle {
+      fill: rgb(45, 45, 53);
+    }
+
+    &:hover svg path {
+      stroke: #fff;
+      transform: translateX(1px);
+    }
+  }
+
+  .propertyhive-pagination__meta {
+    @include area;
+    font-weight: 500;
+    @include font-size-18;
+    @include text-color(dark-grey);
+    margin: auto;
+    @include max-width(sm) {
+      text-align: center;
+    }
+  }
+}
+
+#ph-search-results-wrap #custom-results-map {
+  display: none;
+}
+#ph-search-results-wrap #ph-search-results {
+  display: block;
+}
+
+#ph-search-results-wrap.is-map-view #custom-results-map {
+  display: block;
+}
+#ph-search-results-wrap.is-map-view #ph-search-results {
+  display: none;
+}
+
+#ph-search-results-wrap.is-map-view #ph-search-pagination {
+  display: block;
+}
+#ph-search-results-wrap.is-map-view .propertyhive-pagination__prev,
+#ph-search-results-wrap.is-map-view .propertyhive-pagination__next {
+  display: none;
+}
+
+#custom-results-map {
+  margin-top: 0rem;
+  margin-bottom: 4rem;
+  border-radius: 12px;
+  height: 600px;
+  @include min-width(xlg) {
+    height: 900px;
+  }
+}
+
+.ph-results-toggles {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0rem;
+  padding-top: 1.5rem;
+
+  flex-direction: column;
+}
+
+.ph-results-toggles .is-active {
+  font-weight: 600;
+}
+
+.all-buttons {
+  gap: 0.75rem;
+  display: flex;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  @include text-color(dark-grey);
+  @include font-size-18;
+  font-weight: 300;
+
+  select {
+    background: none;
+    border: 0;
+    @include text-color(dark-grey);
+    @include area;
+    font-size: clamp(
+      16px,
+      16px + (20px - 16px) * (100vw - 1280px) / (1680px - 1280px),
+      20px
+    ) !important;
+    font-weight: 300;
+    text-decoration: underline;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    padding-right: 1.4rem;
+
+    background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='17' height='10' viewBox='0 0 17 10' fill='none'>\
+<path d='M0.707031 0.707031L8.11133 8.11154L15.5158 0.707031' stroke='%232D2D35' stroke-width='2'/>\
+</svg>");
+
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 17px 10px;
+  }
+}
+
+.ph-svg-pin {
+  background: transparent;
+  border: none;
+}
+.ph-svg-pin svg {
+  display: block;
+}
+
+#btn-show-listings,
+#btn-show-map {
+  background: transparent;
+  @include border-color(black);
+  border: 1px solid currentColor;
+
+  // default "inactive" state
+  color: #2d2d35;
+
+  padding: 0.6rem 1.15rem;
+  @include max-width(sm) {
+    padding: 0.6rem 0.75rem;
+  }
+  border-radius: 10px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+  span {
+    @include area;
+    @include font-size-18;
+    @include max-width(sm) {
+      display: none;
+    }
+  }
+
+  svg {
+    display: block;
+    // inherits currentColor for strokes since SVG uses currentColor now
+  }
+
+  &:hover {
+    background: #2d2d35;
+    color: #fff;
+    border-color: #2d2d35;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.is-active {
+    background: #2d2d35;
+    color: #fff;
+    border-color: #2d2d35;
+  }
+}
+
+.ph-popup__price {
+  margin-right: 12px;
+  text-decoration: none;
+  font-size: clamp(
+    17px,
+    17px + (22px - 17px) * (100vw - 1280px) / (1680px - 1280px),
+    22px
+  ) !important;
+  color: #2d2d35 !important;
+  font-family: "IvyJournal", serif !important;
+
+  font-weight: 600;
+}
+
+.ph-popup__title,
+.ph-popup__tag {
+  display: none;
+}
+
+.leaflet-popup-content {
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+  width: 280px !important;
+}
+
+.ph-popup__img {
+  border-radius: 12px;
+}
+
+.ph-popup__imgWrap {
+  aspect-ratio: 1/1;
+}
+
+.leaflet-popup-close-button {
+  display: none;
+}
+.ph-popup__meta {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ph-popup__addr {
+  margin-bottom: 0.25rem;
+}

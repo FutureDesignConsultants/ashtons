@@ -1,0 +1,15 @@
+{
+    "name": "acf/mortgage-calculators",
+    "title": "Mortgage Calculators",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/mortgage-calculators/mortgage-calculators.php"
+    }
+}

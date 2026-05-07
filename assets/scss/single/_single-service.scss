@@ -1,0 +1,22 @@
+.service-masthead {
+  height: auto;
+  @include flex(row, center, center);
+
+  .thumbnail {
+    height: 10rem;
+    order: -1;
+    @include min-width(sm) {
+      order: 2;
+      height: 25rem;
+    }
+
+    @include min-width(lg) {
+      order: 2;
+      height: 35rem;
+    }
+  }
+
+  p {
+    max-width: 80%;
+  }
+}

@@ -1,0 +1,224 @@
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  @include text-color(white);
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  padding: 0.6rem 1.15rem;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateY(101%);
+    @include max-width(sm) {
+      transform: translateY(103%);
+    }
+    transition: transform 0.35s ease;
+    @include bg-color(green);
+    z-index: -1;
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    transform: translateY(0);
+  }
+
+  &.square {
+    border-radius: 10px;
+    padding: 16px 30px;
+
+    span {
+      line-height: 90%; /* 23.4px */
+      @include area(500);
+      @include font-size-20;
+    }
+  }
+
+  // keep inner content above the overlay (belt + braces)
+  .cta-text,
+  svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  span {
+    @include font-size-16;
+    @include area(500);
+  }
+
+  &:hover {
+    @include bg-color(white);
+    @include text-color(dark-grey);
+  }
+
+  &.large {
+    span {
+      @include font-size-20;
+    }
+  }
+
+  // Modifier: Pink
+  &.pink {
+    @include bg-color(pink);
+    @include text-color(white);
+
+    &:hover {
+      @include bg-color(white);
+      @include text-color(dark-grey);
+    }
+  }
+  &.green {
+    @include bg-color(green);
+    @include text-color(dark-grey);
+
+    &:hover {
+      @include bg-color(pink);
+      @include text-color(white);
+    }
+    &:before {
+      @include bg-color(pink);
+    }
+  }
+  &.grey {
+    @include bg-color(dark-grey);
+    @include text-color(off-white);
+    &:hover {
+      @include bg-color(pink);
+    }
+    &:before {
+      @include bg-color(pink);
+    }
+  }
+  &.yellow {
+    @include bg-color(yellow);
+    @include text-color(dark-grey);
+
+    &:hover {
+      @include bg-color(green);
+      @include text-color(dark-grey);
+    }
+    &:before {
+      @include bg-color(green);
+    }
+  }
+  &.orange {
+    @include bg-color(orange);
+    @include text-color(dark-grey);
+
+    &:hover {
+      @include bg-color(dark-grey);
+      @include text-color(white);
+    }
+    &:before {
+      @include bg-color(dark-grey);
+    }
+  }
+  &.light-team {
+    background-color: #ecefcc;
+    border: 1px solid #2d2d35;
+    @include text-color(dark-grey);
+
+    &:hover {
+      background-color: #d2d5b4;
+
+      // @include text-color(white);
+    }
+    &:before {
+      background-color: #d2d5b4;
+    }
+  }
+
+  &.blue {
+    @include bg-color(blue);
+    @include text-color(dark-grey);
+
+    &:hover {
+      @include bg-color(green);
+      @include text-color(dark-grey);
+    }
+    &:before {
+      @include bg-color(green);
+    }
+  }
+  &.light-grey {
+    background-color: #38383f;
+    @include text-color(white);
+
+    &:hover {
+      @include bg-color(pink);
+      @include text-color(white);
+    }
+    &:before {
+      @include bg-color(pink);
+    }
+    &.buy {
+      &:hover {
+        @include bg-color(green);
+        @include text-color(dark-grey);
+      }
+      &:before {
+        @include bg-color(green);
+      }
+    }
+    &.rent {
+      &:hover {
+        @include bg-color(orange);
+        @include text-color(dark-grey);
+      }
+      &:before {
+        @include bg-color(orange);
+      }
+    }
+    &.sell {
+      &:hover {
+        @include bg-color(pink);
+      }
+      &:before {
+        @include bg-color(pink);
+      }
+    }
+  }
+  &.light-pink {
+    background-color: #fcbbca;
+    @include text-color(dark-grey);
+
+    &:hover {
+      background-color: #fcbbca5b;
+    }
+
+    &:before {
+      background-color: #fcbbca5b;
+    }
+  }
+
+  &.light-blue {
+    background-color: #afe6ec;
+    @include text-color(dark-grey);
+
+    &:hover {
+      background-color: #afe6ec5b;
+    }
+
+    &:before {
+      background-color: #afe6ec5b;
+    }
+  }
+  &.light-orange {
+    background-color: #ffcc9e;
+    @include text-color(dark-grey);
+
+    &:hover {
+      background-color: #ffcc9e5b;
+    }
+
+    &:before {
+      background-color: #ffcc9e5b;
+    }
+  }
+}

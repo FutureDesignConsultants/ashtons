@@ -1,0 +1,15 @@
+{
+    "name": "acf/image-column-two",
+    "title": "Image Column Two",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/image-column-two/image-column-two.php"
+    }
+}

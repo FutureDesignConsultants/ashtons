@@ -1,0 +1,15 @@
+{
+    "name": "acf/meet-the-team-hero",
+    "title": "Meet the team hero",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/meet-the-team-hero/meet-the-team-hero.php"
+    }
+}

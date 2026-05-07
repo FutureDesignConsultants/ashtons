@@ -1,0 +1,234 @@
+{
+    "key": "group_69b2da0f64dfd",
+    "title": "Single: Card",
+    "fields": [
+        {
+            "key": "field_69b2da0f1dae8",
+            "label": "Card Type",
+            "name": "card_type",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "exclusive-access": "Exclusive Access",
+                "branch-finder": "Branch Finder",
+                "landlord-cta": "Landlord CTA",
+                "area-guides": "Area Guides",
+                "property-investments": "Property Investments",
+                "commercial-property": "Commercial Property",
+                "mortgages": "Mortgages"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_69b2daa64ffb3",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69b2daae4ffb4",
+            "label": "Text",
+            "name": "text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "exclusive-access"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "landlord-cta"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "area-guides"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "property-investments"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "commercial-property"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "mortgages"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_69b2dad34ffb5",
+            "label": "CTA",
+            "name": "cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "exclusive-access"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "landlord-cta"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "area-guides"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "property-investments"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "commercial-property"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "mortgages"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_69b2dafb4ffb7",
+            "label": "Image",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69b2da0f1dae8",
+                        "operator": "==",
+                        "value": "property-investments"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "cards"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1777374105
+}

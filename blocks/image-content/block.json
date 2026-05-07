@@ -1,0 +1,15 @@
+{
+    "name": "acf/image-content",
+    "title": "Image Content",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/image-content/image-content.php"
+    }
+}

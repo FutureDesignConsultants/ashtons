@@ -1,0 +1,15 @@
+{
+    "name": "acf/team-callout",
+    "title": "Team Callout",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/team-callout/team-callout.php"
+    }
+}

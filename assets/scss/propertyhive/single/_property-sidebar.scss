@@ -1,0 +1,325 @@
+.sticky-inner {
+  @include min-width(md) {
+    top: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.property-sidebar {
+  position: relative;
+  width: 100%;
+
+  min-width: 0;
+  margin-bottom: 3rem;
+  z-index: 0;
+
+  .property-sidebar__inner {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    @include min-width(md) {
+      margin-bottom: 0;
+    }
+
+    &.is-ready {
+      @include min-width(md) {
+        position: fixed;
+        width: var(--property-sidebar-width);
+        max-width: var(--property-sidebar-width);
+      }
+    }
+  }
+
+  .share-trigger .share-icon path {
+    transition: fill 0.3s ease;
+  }
+
+  .share-trigger:hover .share-icon path {
+    fill: #ff2e69;
+  }
+
+  .back-search-desktop {
+    @include max-width(sm) {
+      display: none;
+    }
+  }
+
+  .back-search {
+    background: none;
+    border: 0;
+    text-decoration: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #d7d7d7;
+    width: 100%;
+
+    .search-link {
+      text-decoration: none;
+    }
+
+    .search-link svg circle,
+    .search-link svg path {
+      transition: all 0.3s ease;
+    }
+
+    .search-link:hover svg circle {
+      fill: #ff2e69;
+    }
+
+    .search-link:hover svg path {
+      stroke: #ffffff;
+    }
+
+    .share {
+      cursor: pointer;
+    }
+
+    .share .share-icon path {
+      transition: fill 0.3s ease;
+    }
+
+    .share:hover .share-icon path {
+      fill: #ff2e69;
+    }
+
+    span {
+      @include font-size-16;
+      @include text-color(dark-grey);
+    }
+
+    circle,
+    path {
+      transition:
+        fill 0.2s ease,
+        stroke 0.2s ease;
+    }
+  }
+
+  .property-price {
+    margin-top: 1rem;
+    @include max-width(sm) {
+      margin-top: 0rem;
+    }
+
+    h3 {
+      span {
+        font-weight: 600;
+      }
+    }
+
+    span {
+      @include font-size-16;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      @include area;
+    }
+
+    h3 {
+      text-transform: initial;
+      margin-top: 0.5rem;
+      @include ivy;
+      @include font-size-40;
+      @include max-width(xlg) {
+        @include font-size-32;
+      }
+
+      @include max-width(sm) {
+        @include font-size-50;
+      }
+      font-weight: 600;
+    }
+
+    h1 {
+      @include area;
+      font-weight: 400;
+      @include font-size-22;
+      @include max-width(xlg) {
+        @include font-size-18;
+      }
+      text-transform: initial;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .cta-button {
+    padding: 16px 23px;
+    span {
+      @include font-size-16;
+      @include max-width(sm) {
+        @include font-size-24;
+        margin: auto;
+      }
+    }
+    @include max-width(sm) {
+      width: 100%;
+    }
+  }
+
+  .property-details-sidebar {
+    margin-top: 1.5rem;
+    @include max-width(sm) {
+      margin-top: 1rem;
+    }
+    width: 100%;
+    max-width: 100%;
+    @include min-width(lg) {
+      max-width: 70%;
+    }
+
+    @include min-width(xlg) {
+      max-width: 100%;
+    }
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    @include max-width(sm) {
+      gap: 0.5rem;
+    }
+    align-items: stretch;
+  }
+
+  .property-details-sidebar .detail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d7d7d7;
+    flex: 0 1 auto;
+  }
+
+  .property-details-sidebar .detail-row svg {
+    width: 22px;
+    min-width: 22px;
+    max-width: 22px;
+    flex: 0 0 22px;
+  }
+
+  .property-details-sidebar .detail-row .info {
+    min-width: 0;
+    display: flex;
+    flex: 1 1 auto;
+    gap: 0.25rem;
+  }
+
+  .property-details-sidebar span,
+  .property-details-sidebar strong {
+    @include font-size-16;
+    @include area;
+    font-weight: 300;
+  }
+
+  .calculator-cta {
+    width: 100%;
+    margin-top: 1rem;
+    max-width: fit-content;
+    @include max-width(sm) {
+      max-width: 100%;
+      .content {
+        text-align: center;
+      }
+    }
+    padding: 1.5rem;
+    border-radius: 12px;
+    background-color: rgba(175, 230, 236, 0.5019607843) !important;
+
+    .calculator-icon {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      @include max-width(sm) {
+        right: 1rem;
+        width: 40px;
+      }
+    }
+    .title {
+      font-weight: 300;
+      @include max-width(xlg) {
+        @include font-size-16;
+      }
+    }
+
+    .monthly-payment {
+      display: block;
+      margin-top: 0.25rem;
+      @include font-size-32;
+      @include max-width(xlg) {
+        @include font-size-24;
+      }
+      @include max-width(sm) {
+        @include font-size-32;
+      }
+      @include ivy;
+      font-weight: 600;
+    }
+
+    .cta-button {
+      max-width: fit-content;
+      @include max-width(sm) {
+        max-width: 100%;
+      }
+      padding: 11px 14px;
+    }
+
+    .partnership {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+      @include max-width(sm) {
+        justify-content: center;
+      }
+      span {
+        @include font-size-14;
+        font-weight: 300;
+      }
+      svg {
+        width: 122px;
+        margin-top: -3px;
+      }
+      @include max-width(sm) {
+        svg {
+          width: 112px;
+          margin-top: -3px;
+        }
+      }
+    }
+
+    @include bg-color(blue-tint);
+  }
+
+  .arrange-viewing {
+    margin-top: 2rem;
+    @include max-width(xlg) {
+      margin-top: 1.5rem;
+    }
+    @include max-width(sm) {
+      margin-top: 1rem;
+    }
+  }
+
+  .share-property {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    span {
+      @include area;
+      font-weight: 500;
+      @include text-color(dark-grey);
+      @include font-size-16;
+    }
+
+    svg {
+      circle,
+      path {
+        transition: fill 0.25s ease-in-out;
+      }
+    }
+  }
+}

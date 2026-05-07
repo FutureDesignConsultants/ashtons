@@ -1,0 +1,113 @@
+.team-member-slider {
+  .glide__arrows {
+    .cls-1 {
+      fill: none;
+      @include stroke-color(white);
+    }
+  }
+
+  .team-slide-card {
+    .icon {
+      .cls-1,
+      .cls-2 {
+        transition:
+          fill 0.3s ease,
+          stroke 0.3s ease;
+      }
+    }
+    cursor: pointer;
+    &:hover {
+      .icon {
+        .cls-1 {
+          fill: none;
+          @include stroke-color(white);
+        }
+        .cls-2 {
+          @include fill-color(black);
+          @include stroke-color(white);
+        }
+      }
+    }
+  }
+
+  .img-wrap {
+    position: relative;
+    height: 25rem;
+    overflow: hidden;
+    border-radius: 1rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.4); // Adjust opacity as needed
+      z-index: 1;
+      pointer-events: none; // Allows clicks to pass through
+    }
+
+    img {
+      @include img-border-radius;
+      display: block;
+    }
+
+    .title-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 1rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      text-align: left;
+      @include text-color(white);
+      z-index: 2;
+
+      h3 {
+        margin: 0;
+        font-weight: 300;
+        @include font-size-small;
+      }
+
+      .job-role {
+        margin: 0;
+        font-weight: 300;
+        @include font-size-x-small;
+      }
+
+      .cls-1 {
+        @include fill-color(white);
+        stroke: none;
+        transition: all 0.3s;
+      }
+      .cls-2 {
+        @include fill-color(black);
+        @include stroke-color(black);
+      }
+    }
+  }
+  .icon {
+    width: 3.25rem;
+  }
+  .description {
+    @include font-size-x-small;
+    font-weight: 300;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 1rem;
+    text-align: left;
+    color: #fff;
+    z-index: 2;
+    line-height: 1.2em;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    &.is-visible {
+      display: block;
+      opacity: 1;
+    }
+  }
+}

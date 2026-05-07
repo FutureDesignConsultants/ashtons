@@ -1,0 +1,211 @@
+.testimonials {
+  @include max-width(sm) {
+    padding-bottom: 0;
+  }
+  .swiper-slide {
+    aspect-ratio: 1.58 / 0.6;
+    @include max-width(sm) {
+      aspect-ratio: 1.58 / 0.9;
+    }
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    display: none !important;
+  }
+  .left-grid {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    order: 1;
+
+    @include max-width(sm) {
+      flex-direction: row;
+    }
+
+    .img-wrapper {
+      width: 60%;
+      margin-bottom: 3rem;
+
+      @include max-width(sm) {
+        margin-bottom: 0rem !important;
+        width: 31%;
+        order: 2;
+        height: fit-content;
+        height: 7rem;
+        position: relative;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        object-position: left center;
+
+        @include max-width(sm) {
+          position: absolute;
+          top: -40%;
+          left: 0;
+          z-index: 6;
+        }
+      }
+
+      @include min-width(md) {
+        display: block;
+      }
+    }
+
+    .swiper-buttons {
+      height: 100px;
+      width: auto;
+      flex-shrink: 0;
+      gap: 1rem;
+      width: 200px;
+
+      @include max-width(sm) {
+        justify-content: flex-start; // Or 'center'
+        gap: 1rem; // Add a specific gap between the image and the buttons
+        padding: 0 0 0 2rem;
+      }
+
+      @include min-width(md) {
+        height: 20%;
+        width: 200px;
+      }
+    }
+
+    @include min-width(md) {
+      grid-column: 1 / 4;
+      order: unset;
+    }
+  }
+
+  .testimonial-wrapper {
+    grid-column: 1 / -1;
+
+    h2 {
+      line-height: 85%; /* 51px */
+      letter-spacing: -1.2px;
+      @include text-color(off-white);
+      @include font-size-50;
+      @include din(600);
+      margin-bottom: 3rem;
+      letter-spacing: 0.75px;
+
+      @include min-width(md) {
+        margin-bottom: 3rem;
+      }
+    }
+
+    .swiper-slide {
+      border-left: 1px #faf8f4 solid;
+      padding: 0 0 0 2rem;
+      @include flex(column, space-between, flex-start);
+
+      p {
+        text-wrap: balance;
+        line-height: normal;
+        letter-spacing: -0.52px;
+        @include text-color(off-white);
+        @include font-size-18;
+        @include ivy(400);
+      }
+
+      .name-company {
+        line-height: 85%;
+        @include text-color(green);
+        @include font-size-26;
+        @include din(600);
+        text-transform: uppercase;
+        letter-spacing: 0.75px;
+        @include max-width(sm) {
+          max-width: 50%;
+          line-height: 1.1;
+        }
+      }
+
+      @include min-width(md) {
+        padding: 0 0 0 4rem;
+      }
+    }
+
+    @include min-width(md) {
+      grid-column: 4 / 13;
+    }
+  }
+
+  .swiper-buttons {
+    display: flex;
+    gap: 1rem; // optional spacing
+    align-items: center;
+    position: relative;
+    @include max-width(sm) {
+      justify-content: flex-end;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    position: static;
+    width: 55px;
+    height: 55px;
+
+    @include max-width(sm) {
+      height: 42px;
+      width: 42px;
+    }
+
+    @include min-width(xlg) {
+      width: 70px;
+      height: 70px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    cursor: pointer;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+
+      // default state (matches your SVG)
+      circle {
+        fill: transparent; // don't rely on fill="none"
+        transition:
+          fill 0.35s ease,
+          stroke 0.35s ease;
+      }
+
+      path {
+        fill: none; // keep lines from filling
+        transition: stroke 0.35s ease;
+      }
+    }
+
+    &:hover svg {
+      circle {
+        fill: #c1d42f;
+        stroke: #2d2d35;
+      }
+
+      path {
+        stroke: #2d2d35;
+      }
+    }
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    display: none;
+  }
+
+  // .swiper-button-next,
+  // .swiper-button-prev {
+  //   width: auto;
+  //   // height: auto;
+  // }
+}

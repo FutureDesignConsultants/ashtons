@@ -1,0 +1,61 @@
+.full-width-title-cta {
+  .content {
+    text-align: center;
+    position: relative;
+  }
+  .left,
+  .right {
+    position: absolute;
+  }
+
+  .left {
+    width: 175px;
+    left: -200px;
+    top: -70px;
+    object-fit: unset;
+    height: auto;
+    @include max-width(lg) {
+      width: 142px;
+      left: -162px;
+      top: -56px;
+    }
+
+    @include max-width(sm) {
+      width: 70px;
+      left: -59px;
+      top: -50px;
+    }
+  }
+  .right {
+    width: 210px;
+    right: -225px;
+    top: -100px;
+    object-fit: unset;
+    height: auto;
+    @include max-width(lg) {
+      width: 170px;
+    }
+
+    @include max-width(sm) {
+      width: 80px;
+      right: -69px;
+      top: -59px;
+    }
+  }
+  h2 {
+    line-height: 1;
+    position: relative;
+    max-width: fit-content;
+    margin: auto;
+    @include font-size-80;
+  }
+  .paragraph {
+    max-width: 40%;
+    @include max-width(sm) {
+      max-width: 100%;
+    }
+    margin: auto;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+  }
+}

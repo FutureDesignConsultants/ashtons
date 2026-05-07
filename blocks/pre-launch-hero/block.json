@@ -1,0 +1,15 @@
+{
+    "name": "acf/pre-launch-hero",
+    "title": "Pre-Launch Hero",
+    "description": "A sample ACF block.",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "mode": "edit",
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "render_template": "blocks/pre-launch-hero/pre-launch-hero.php"
+    }
+}

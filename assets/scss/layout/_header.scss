@@ -1,0 +1,1181 @@
+// Reusable gradient “reveal” text style
+%gradient-text-reveal {
+  background: linear-gradient(
+    to top,
+    map-get($colors, green) 50%,
+    map-get($colors, white) 50%
+  );
+  background-size: 100% 200%;
+  background-position: 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: background-position 0.7s ease;
+
+  &:hover,
+  &:focus-visible,
+  &[aria-expanded="true"] {
+    background-position: 0 100%;
+  }
+}
+
+%gtr-green {
+  @include gradient-text-reveal-variant(map-get($colors, green));
+}
+%gtr-orange {
+  @include gradient-text-reveal-variant(map-get($colors, orange));
+}
+%gtr-pink {
+  @include gradient-text-reveal-variant(map-get($colors, pink));
+}
+
+:root {
+  --fixed-header-height: 0px;
+}
+
+body.page-id-126 {
+  padding-top: var(--fixed-header-height);
+}
+
+.page-blur-overlay {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    position: fixed;
+    top: var(--header-height, 100px);
+    left: 0;
+    width: 100%;
+    height: calc(100dvh - var(--header-height, 100px));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: rgb(45 45 53 / 88%);
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    z-index: 900;
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+header {
+  position: relative;
+  z-index: 1001;
+}
+
+.mega-panels,
+.desktop-burger-menu {
+  position: relative;
+  z-index: 1002;
+}
+
+header {
+  .desktop-burger-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    @include max-width(sm) {
+      display: none;
+    }
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+    z-index: 99999;
+
+    .main-wrap {
+      @include bg-color(grey);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+    }
+
+    &.nav-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    ul,
+    li {
+      list-style-type: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      background: linear-gradient(
+        to top,
+        map-get($colors, green) 50%,
+        map-get($colors, white) 50%
+      );
+      @include font-size-20;
+      @include area;
+      text-decoration: none;
+      background-size: 100% 200%;
+      background-position: 0 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: background-position 0.7s ease;
+
+      &:hover,
+      &:focus-visible,
+      &[aria-expanded="true"] {
+        background-position: 0 100%;
+      }
+    }
+
+    h3 {
+      @include font-size-50;
+    }
+
+    .latest-commercial {
+      h3 {
+        @include text-color(green);
+      }
+    }
+    .latest-land {
+      h3 {
+        @include text-color(blue-tint);
+      }
+    }
+
+    .menu-burger-desktop {
+      grid-column: span 3;
+      padding-left: 2.5rem;
+    }
+
+    .menu-burger-desktop a.cta-button {
+      background: #c1d42f;
+      margin-top: 1rem;
+    }
+
+    .line-break {
+      grid-column: 8/9;
+      width: 1px;
+      height: 100%;
+      background: #d7d7d7;
+      margin: auto;
+    }
+
+    .latest-commercial {
+      grid-column: 4/8;
+      .mega-card__price {
+        span {
+          @include ivy;
+          font-weight: 600;
+        }
+      }
+    }
+    .latest-land {
+      grid-column: 9/13;
+    }
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  transition: transform 0.45s ease;
+  will-change: transform;
+
+  &.header--hidden {
+    transform: translateY(-100%);
+  }
+
+  @include max-width(sm) {
+    &.nav-open {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  // -------------------------
+  // Layout wrappers
+  // -------------------------
+  .nav-wrap {
+    position: relative; // anchors #mega-panels
+    overflow: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    .right {
+      z-index: 1001;
+      align-items: flex-end;
+    }
+
+    .cta-button {
+      max-height: fit-content;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+  }
+
+  // -------------------------
+  // Desktop primary menu
+  // -------------------------
+  #menu-primary-menu {
+    @include flex(row, space-between);
+    gap: 1.75rem;
+    position: relative;
+
+    // “hover bridge” to keep mega open while moving to panel
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+
+      top: 100%; // ✅ directly below the menu (no overlap)
+      height: 74px; // ✅ the “bridge” height you want
+
+      pointer-events: auto; // ✅ counts as hover
+      background: transparent;
+    }
+    > li {
+      position: relative;
+      z-index: 1; // ✅ above the bridge
+    }
+
+    > li > a {
+      cursor: pointer;
+      @include flex(row, center, center);
+      @include font-size-16;
+      @include area;
+      gap: 0.5rem;
+      line-height: 1.4;
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+
+      @extend %gradient-text-reveal;
+    }
+
+    > li > a[data-mega] {
+      --menu-accent: #{map-get($colors, white)}; // default
+    }
+
+    > li > a[data-mega] .dropdown-icon {
+      color: var(--menu-accent);
+    }
+
+    // > li > a[data-mega][data-panel-type="buy"] {
+    //   @extend %gtr-green;
+    // }
+
+    // > li > a[data-mega][data-panel-type="rent"] {
+    //   @extend %gtr-orange;
+    // }
+
+    // > li > a[data-mega][data-panel-type="sell"] {
+    //   @extend %gtr-pink;
+    //   &:hover {
+    //     .dropdown-icon {
+    //       path {
+    //         stroke: #ff2e69;
+    //       }
+    //     }
+    //   }
+    // }
+
+    // Dropdown icon for items that trigger mega panels
+    > li > a[data-mega] {
+      .dropdown-icon {
+        width: 8px;
+        height: 8px;
+        flex: 0 0 8px;
+
+        // <a> is color: transparent due to gradient text clip,
+        // so we must override for the icon
+        color: map-get($colors, white);
+
+        svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          transition: transform 0.4s ease; // 👈 add this
+          transform-origin: center;
+        }
+
+        path {
+          stroke: currentColor;
+          transition: stroke 0.4s ease;
+        }
+      }
+
+      // Rotate on hover / focus / open
+      &:hover .dropdown-icon svg,
+      &:focus-visible .dropdown-icon svg,
+      &[aria-expanded="true"] .dropdown-icon svg {
+        transform: rotate(180deg);
+      }
+
+      // Keep colour change
+      &:hover .dropdown-icon,
+      &:focus-visible .dropdown-icon,
+      &[aria-expanded="true"] .dropdown-icon {
+        color: map-get($colors, green);
+      }
+    }
+
+    // Last menu item special arrow
+    > li:last-child > a {
+      @include text-color(green);
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: currentColor;
+
+        transform: scaleX(0);
+        transform-origin: left; // start point
+        transition: transform 0.3s ease; // animate only transform
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        transform: scaleX(1);
+        transform-origin: left; // draw from left
+      }
+
+      // 👇 this controls the exit direction
+      &:not(:hover)::after {
+        transform-origin: right; // shrink toward right
+      }
+    }
+  }
+
+  // -------------------------
+  // Mega panels (desktop)
+  // -------------------------
+  #mega-panels {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 74px; // matches your gap/bridge
+    z-index: 999;
+
+    opacity: 1;
+    transform: translate3d(0, 14px, 0);
+    pointer-events: none;
+    will-change: transform, opacity;
+
+    transition:
+      opacity 180ms ease-out,
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.is-open {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      pointer-events: auto;
+    }
+  }
+
+  .mega-panel {
+    --panel-accent: #c1d42f;
+  } /* buy default */
+  .mega-panel--rent {
+    --panel-accent: #ff8d28;
+  } /* example */
+  .mega-panel--sell {
+    --panel-accent: #ff2e69;
+  } /* example */
+
+  .mega-panel .mega-card__body svg {
+    color: var(--panel-accent);
+  }
+
+  .mega-panel--rent {
+    .mega-heading,
+    .mega-subheading {
+      @include text-color(orange);
+    }
+    .mega-links {
+      a:not(.cta-button) {
+        @extend %gtr-orange;
+      }
+    }
+    .mega-cards-grid {
+      .mega-card__media::after {
+        @include bg-color(orange);
+        @include text-color(white);
+      }
+    }
+  }
+
+  .mega-panel--sell {
+    .mega-heading,
+    .mega-subheading {
+      @include text-color(pink);
+    }
+    .mega-links {
+      a:not(.cta-button) {
+        @extend %gtr-pink;
+      }
+    }
+    .mega-cards-grid {
+      .mega-card__media::after {
+        @include bg-color(pink);
+        @include text-color(white);
+      }
+    }
+  }
+
+  .mega-panel {
+    width: 100%;
+  }
+
+  .mega-inner {
+    @include bg-color(grey);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    gap: 2rem;
+  }
+
+  .mega-heading {
+    grid-column: span 2;
+    @include text-color(green);
+    text-align: center;
+    @include font-size-50;
+  }
+
+  .mega-subheading {
+    @include text-color(green);
+    @include font-size-50;
+  }
+
+  .mega-links {
+    padding: 0;
+    margin: 0;
+    grid-column: 3 / 6;
+
+    li a {
+      @include flex(row, start, center);
+      @include font-size-20;
+      @include area;
+      gap: 0.5rem;
+      line-height: 1.4;
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+      margin-bottom: 1rem;
+
+      @extend %gradient-text-reveal;
+    }
+  }
+
+  .mega-cards {
+    @include min-width(xlg) {
+      grid-column: 6 / 12;
+    }
+    grid-column: 6 / 13;
+  }
+
+  .menu-text {
+    // line-height: 3.3;
+  }
+
+  .mega-cards-grid {
+    margin-top: 0.5rem;
+
+    .mega-card {
+      display: block;
+      text-decoration: none;
+      @include text-color(white);
+    }
+
+    .mega-card__media {
+      aspect-ratio: 278.1475 / 225.8557;
+      overflow: hidden;
+      position: relative;
+      border-radius: 12px;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        transform: scale(1);
+        transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
+      }
+
+      // Ribbon
+      &::after {
+        content: "View";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        padding-block: 0.5rem;
+        text-align: center;
+
+        @include bg-color(green);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+
+        @include text-color(dark-grey);
+
+        @include font-size-16;
+
+        line-height: 100%;
+
+        transform: translateY(110%);
+        opacity: 0;
+
+        transition:
+          transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.25s ease;
+
+        pointer-events: none;
+        z-index: 2;
+      }
+    }
+
+    // Hover effects
+    .mega-card:hover .mega-card__media img,
+    .mega-card:focus-visible .mega-card__media img {
+      transform: scale(1.06);
+    }
+
+    .mega-card:hover .mega-card__media::after,
+    .mega-card:focus-visible .mega-card__media::after {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mega-card__body {
+      margin-top: 1.15rem;
+    }
+
+    .mega-card__price {
+      @include ivy;
+      @include font-size-22;
+      font-weight: 700;
+    }
+
+    .mega-card__title,
+    .mega-card__beds {
+      font-weight: 300;
+      @include font-size-16;
+    }
+  }
+
+  // -------------------------
+  // Mobile menu + burger
+  // -------------------------
+  .burger-wrap {
+    z-index: 9999;
+  }
+
+  .burger-btn {
+    @include flex(column, space-between);
+    width: 2rem;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+    transition: transform 0.3s ease;
+
+    &:hover span {
+      @include bg-color(green);
+    }
+
+    span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      @include bg-color(white);
+      border-radius: 32px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    &.open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+  }
+
+  /* default: desktop icon visible */
+  .dropdown-icon--mobile {
+    display: none;
+  }
+
+  /* mobile breakpoint (adjust to your theme) */
+  @include max-width(sm) {
+    .dropdown-icon--desktop {
+      display: none;
+    }
+    .dropdown-icon--mobile {
+      display: inline-flex;
+    }
+  }
+
+  .mobile-nav {
+    padding-top: calc(6rem + env(safe-area-inset-top)); // was 6rem
+    &:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: env(safe-area-inset-top);
+      background: map-get($colors, grey); // same as your mobile-nav bg
+      z-index: 1001; // above the menu background
+      pointer-events: none;
+    }
+
+    .mobile-panel__properties {
+      position: relative; // anchor buttons
+    }
+
+    .mobile-property-swiper {
+      position: relative;
+      overflow: visible; // allow buttons to sit outside card
+      padding-inline: 10px; // tweak to taste (8–16px)
+    }
+
+    .mobile-property-nav {
+      pointer-events: none; // allow swipe through
+
+      .mobile-property-nav__btn {
+        position: absolute;
+        top: 33%;
+        transform: translateY(-50%);
+        z-index: 5;
+
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+
+        width: 45px;
+        height: 45px;
+
+        display: grid;
+        place-items: center;
+
+        pointer-events: auto; // re-enable click
+
+        svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+          transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+        }
+
+        &:active svg {
+          transform: scale(0.92);
+        }
+
+        &.swiper-button-disabled {
+          opacity: 0.35;
+          pointer-events: none;
+        }
+      }
+
+      .mobile-property-nav__btn--prev {
+        left: -10px; // adjust if you want further out
+      }
+
+      .mobile-property-nav__btn--next {
+        right: -10px;
+      }
+    }
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 4rem 0rem 0rem 0rem;
+    @include bg-color(grey);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    @include din;
+
+    .mega-card__tag {
+      position: absolute;
+      z-index: 1;
+      left: 0.5rem;
+      border-radius: 100px;
+      top: 0.5rem;
+      padding: 0.65rem 1.15rem;
+      @include font-size-16;
+
+      &.sell {
+        @include bg-color(pink);
+      }
+    }
+
+    .mobile-panel__properties {
+      padding-bottom: 0rem;
+      overflow-x: hidden;
+      position: relative; // anchor buttons
+    }
+
+    .mobile-panel__properties-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-panel__subtitle {
+      @include text-color(green);
+      @include font-size-24;
+      margin: 0;
+    }
+
+    .mobile-property-swiper {
+      width: 100%;
+      overflow: visible; // allow peeking slides
+      padding-bottom: 0.25rem;
+      position: relative;
+
+      .swiper-wrapper {
+        align-items: stretch;
+      }
+
+      .swiper-slide {
+        height: auto;
+      }
+
+      .swiper-slide {
+        height: auto;
+      }
+
+      // reuse desktop card styles, tweak for mobile
+      .mega-card--mobile {
+        display: block;
+        text-decoration: none;
+        @include text-color(white);
+
+        .mega-card__media {
+          border-radius: 12px;
+          overflow: hidden;
+          aspect-ratio: 1.5 / 1;
+
+          img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+          }
+
+          &::after {
+            content: "View";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding-block: 0.5rem;
+            text-align: center;
+
+            @include bg-color(green);
+            @include text-color(dark-grey);
+            @include font-size-16;
+
+            transform: translateY(110%);
+            opacity: 0;
+
+            transition:
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+
+            pointer-events: none;
+            z-index: 2;
+          }
+
+          position: relative;
+        }
+
+        // allow tap to reveal ribbon (optional)
+        &:active .mega-card__media::after {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .mega-card__body {
+          margin-top: 0.9rem; // tighter than desktop
+        }
+
+        .mega-card__price {
+          @include ivy;
+          @include font-size-22;
+        }
+
+        .mega-card__beds {
+          font-weight: 300;
+          @include font-size-16;
+        }
+
+        .mega-card__title {
+          font-weight: 300;
+          @include font-size-16;
+          line-height: 1.2;
+        }
+
+        // make sure the icon color matches desktop theme
+        svg path {
+          stroke: map-get($colors, green);
+        }
+      }
+    }
+
+    .mobile-property-card {
+      display: block;
+      text-decoration: none;
+      @include text-color(white);
+
+      overflow: hidden;
+
+      .mobile-property-card__img {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 6px;
+          display: block;
+          object-fit: cover;
+        }
+      }
+
+      .mobile-property-card__body {
+        padding: 0.85rem 0.9rem;
+      }
+
+      .mobile-property-card__price {
+        @include ivy;
+        @include font-size-22;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .mobile-property-card__title {
+        @include font-size-16;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+    }
+
+    .mobile-property-nav {
+      display: flex;
+      gap: 0.5rem;
+      flex: 0 0 auto;
+      pointer-events: none;
+
+      .mobile-property-nav__btn {
+        margin: 1rem;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background: transparent;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        cursor: pointer;
+
+        span {
+          width: 10px;
+          height: 10px;
+          border-right: 2px solid map-get($colors, off-white);
+          border-bottom: 2px solid map-get($colors, off-white);
+          display: block;
+        }
+
+        &--prev span {
+          transform: rotate(135deg);
+          margin-left: 4px;
+        }
+
+        &--next span {
+          transform: rotate(-45deg);
+          margin-right: 4px;
+        }
+
+        &.swiper-button-disabled {
+          opacity: 0.35;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .cta-button {
+      max-width: fit-content;
+      margin: auto;
+      display: flex;
+    }
+
+    .mobile-bottom {
+      position: absolute;
+      bottom: 1rem; // match your padding
+      left: 0;
+      width: 100%;
+      z-index: 1; // same layer as menu list
+    }
+
+    &.nav-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    li {
+      line-height: 1;
+    }
+
+    .menu-text {
+      margin-top: 1rem;
+      @include din;
+    }
+
+    ul.menu-primary {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+      li {
+        &:last-child {
+          display: none;
+        }
+      }
+
+      a {
+        @include flex(row, space-between, center);
+        padding: 0;
+        gap: 0.5rem;
+        line-height: 1;
+        text-decoration: none;
+        @include text-color(off-white);
+        @include font-size-100;
+        text-transform: uppercase;
+        font-family: "DIN Condensed", sans-serif !important;
+      }
+    }
+    #menu-burger-additional-menu {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+      li {
+        list-style-type: none;
+        a {
+          @include text-color(off-white);
+          text-decoration: none;
+          @include font-size-24;
+        }
+      }
+    }
+  }
+
+  .mobile-container {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1; // base content layer
+    padding: 0 1rem;
+  }
+
+  .mobile-panels {
+    position: absolute;
+    inset: 0;
+    z-index: 5; // 👈 higher than bottom + list
+    pointer-events: none;
+  }
+
+  .dropdown-icon--desktop {
+    display: inline-flex;
+  }
+  .dropdown-icon--mobile {
+    display: none;
+  }
+
+  @include max-width(sm) {
+    .dropdown-icon--desktop {
+      display: none;
+    }
+    .dropdown-icon--mobile {
+      display: inline-flex;
+    }
+  }
+
+  .mobile-panel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: map-get($colors, grey);
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    pointer-events: auto;
+    .mobile-cta {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    .mobile-panel__header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0 1rem;
+      .mobile-panel__title {
+        @include text-color(green);
+        @include font-size-100;
+
+        text-transform: uppercase;
+        font-family: "DIN Condensed", sans-serif !important;
+      }
+    }
+    .mobile-panel__links {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      padding: 0 1rem;
+      padding-bottom: 1rem;
+      li {
+        list-style-type: none;
+        a {
+          @include text-color(off-white);
+          text-decoration: none;
+          @include font-size-24;
+        }
+      }
+    }
+    .mobile-panel__back {
+      background: none;
+      border: 0;
+      padding: 0;
+      margin-top: -1rem;
+    }
+  }
+
+  .mobile-panel.is-active {
+    transform: translateX(0);
+  }
+
+  .mobile-nav {
+    .mobile-bottom,
+    .menu-burger-extra {
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    &.panel-open {
+      .mobile-bottom,
+      .menu-burger-extra,
+      .menu-primary {
+        opacity: 0;
+        transform: translateY(12px);
+        pointer-events: none;
+      }
+    }
+
+    .mobile-properties-swiper {
+      width: 100%;
+    }
+
+    .mobile-properties-swiper .swiper-wrapper {
+      width: 100%;
+    }
+
+    .mobile-properties-swiper .swiper-slide {
+      width: 100%;
+    }
+
+    .mobile-property-card__img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .nav-wrap-desktop {
+      display: block;
+    }
+    .nav-wrap-mobile {
+      display: none;
+    }
+  }
+}

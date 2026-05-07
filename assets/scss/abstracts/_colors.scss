@@ -1,0 +1,127 @@
+/* Color Mixins
+================================================ */
+
+// Background color mixin
+@mixin bg-color($color) {
+  background-color: map-get($colors, $color);
+}
+
+// Text color mixin
+@mixin text-color($color) {
+  color: map-get($colors, $color);
+}
+
+// Fill color mixin
+@mixin fill-color($color) {
+  fill: map-get($colors, $color);
+}
+
+// Stroke color mixin
+@mixin stroke-color($color) {
+  stroke: map-get($colors, $color);
+}
+
+// Border Mixin
+
+@mixin border($width: 1px, $style: solid, $color) {
+  border: $width $style map-get($colors, $color);
+}
+
+@mixin border-side($side, $width: 1px, $style: solid, $color, $opacity: 1) {
+  $hex-color: map-get($colors, $color);
+
+  @if $hex-color == null {
+    @error "Color `#{$color}` not found in \$colors map.";
+  }
+
+  $rgba-color: rgba($hex-color, $opacity);
+  border-#{$side}: $width $style $rgba-color;
+}
+
+// Background utility classes
+.bg-white {
+  @include bg-color(white);
+}
+.bg-black {
+  @include bg-color(black);
+}
+.bg-grey {
+  @include bg-color(grey);
+}
+.bg-green {
+  @include bg-color(green);
+}
+.bg-pink {
+  @include bg-color(pink);
+}
+.bg-off-white {
+  @include bg-color(off-white);
+}
+.bg-dark-grey {
+  @include bg-color(dark-grey);
+}
+.bg-yellow-tint {
+  @include bg-color(yellow-tint);
+}
+.bg-green-tint {
+  @include bg-color(green-tint);
+}
+.bg-blue-tint {
+  @include bg-color(blue-tint);
+}
+.bg-pink-tint {
+  @include bg-color(pink-tint);
+}
+// .bg-orange {
+//   @include bg-color(orange);
+// }
+
+.bg-orange-tint {
+  @include bg-color(orange-tint);
+}
+
+.bg-full-orange {
+  @include bg-color(orange);
+}
+
+.bg-full-yellow {
+  @include bg-color(yellow);
+}
+
+// Text utility classes
+.text-white {
+  @include text-color(white);
+}
+.text-black {
+  @include text-color(black);
+}
+.text-grey {
+  @include text-color(grey);
+}
+.text-green {
+  @include text-color(green);
+}
+.text-pink {
+  @include text-color(pink);
+}
+.text-off-white {
+  @include text-color(off-white);
+}
+.text-dark-grey {
+  @include text-color(dark-grey);
+}
+.text-yellow-tint {
+  @include text-color(yellow-tint);
+}
+.text-green-tint {
+  @include text-color(green-tint);
+}
+.text-blue-tint {
+  @include text-color(blue-tint);
+}
+.text-pink-tint {
+  @include text-color(pink-tint);
+}
+.text-orange {
+  @include text-color(orange);
+}

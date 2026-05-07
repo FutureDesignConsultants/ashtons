@@ -1,0 +1,16 @@
+.full-width-title {
+  h2 {
+    @include font-size-large;
+  }
+
+  h3 {
+    @include font-family("secondary");
+  }
+  .content {
+    margin: auto;
+    text-align: center;
+    @include min-width(md) {
+      max-width: 40%;
+    }
+  }
+}
