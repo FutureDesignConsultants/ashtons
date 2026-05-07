@@ -1,0 +1,46 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  web-deploy:
+    name: Deploying to Production (FTP via lftp)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via FTP (lftp mirror)
+        run: |
+          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} <<EOF
+          set ssl:verify-certificate no
+          mirror -R \
+            --verbose \
+            --exclude .git \
+            --exclude .github \
+            --exclude node_modules \
+            --exclude plugins/** \
+            --exclude themes/go/** \
+            --exclude themes/twentytwentyfive/** \
+            --exclude themes/twentytwentyfour/** \
+            --exclude themes/twentytwentythree/** \
+            --exclude uploads/** \
+            --exclude wflogs/** \
+            --exclude-glob="*.log" \
+            ./ /public_html/wp-content/
+          bye
+          EOF
