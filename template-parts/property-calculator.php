@@ -119,11 +119,7 @@ if ( $show_calculator && class_exists('PH_Property') ) {
 				</svg>
 			</a>
 		</div>
-		<p class="estimate">Our estimate is based on a repayment mortgage of £187,400 at 4.5% over a 30 year period.
-			Actual loan amounts and affordability criteria will differ across lenders. To qualify for a mortgage of
-			£187,400 lenders will typically require a gross annual income of £41,644 to £58,563. Our estimate is based
-			on a single income multiple of 3.2 to 4.5, and is subject to the lender's lending criteria. Your home may be
-			repossessed if you do not keep up repayments on a mortgage.</p>
+		<p class="estimate">The figures provided by this calculator are for illustrative purposes only and are intended as a guide. They do not constitute a mortgage offer or financial advice and should not be relied upon when making decisions about proceeding with a property purchase. Actual costs and affordability will vary depending on individual circumstances and lender criteria. We recommend seeking independent mortgage advice before taking any financial decisions. Your home may be repossessed if you do not keep up repayments on your mortgage.</p>
 		<p class="credit-score">Unsure of your credit score?</p>
 		<p class="free-trial">We recommend checking yours before applying for a mortgage – <a
 				href="https://www.checkmyfile.com/?partner=6792&transaction=af916e8a66a445ce9784d360ba1a9a06&utm_source=everflow&utm_medium=referral&utm_campaign=6792"

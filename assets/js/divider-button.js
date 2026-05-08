@@ -1,6 +1,10 @@
 (function () {
+  if (typeof tinymce === "undefined") {
+    return;
+  }
+
   tinymce.create("tinymce.plugins.dividerButton", {
-    init: function (editor, url) {
+    init: function (editor) {
       editor.addButton("divider_button", {
         text: "Dividing Line",
         icon: false,
@@ -13,5 +17,6 @@
       return null;
     },
   });
+
   tinymce.PluginManager.add("divider_button", tinymce.plugins.dividerButton);
 })();

@@ -113,9 +113,7 @@ if ( empty($price) ) {
 		<label><?php echo __( 'Stamp Duty', 'propertyhive' ); ?> (&pound;)</label>
 		<div class="flex gap-16 align-center results">
 			<input type="text" name="stamp_duty" value="" placeholder="" disabled>
-			<p>This calculation is only a guide. Please contact us for more detailed financial guidance. Mauris sed arcu
-				nec nisl pharetra consequat vitae quis felis. Sed id nisl sit amet tellus mattis pharetra ut eget velit.
-			</p>
+			<p>This calculator is for guidance only and does not constitute tax or financial advice. SDLT rates and reliefs depend on your individual circumstances. Please seek independent advice and check the latest information directly with HMRC before proceeding. <a href="https://www.gov.uk/stamp-duty-land-tax/residential-property-rates" target="_blank">View current HMRC Stamp Duty rates</a></p>
 		</div>
 	</div>
 

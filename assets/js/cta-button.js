@@ -1,6 +1,8 @@
 (function () {
+  if (typeof tinymce === "undefined") return;
+
   tinymce.create("tinymce.plugins.cta_button", {
-    init: function (ed, url) {
+    init: function (ed) {
       ed.addButton("cta_button", {
         text: "Insert CTA Button",
         onclick: function () {
@@ -11,5 +13,6 @@
       });
     },
   });
+
   tinymce.PluginManager.add("cta_button", tinymce.plugins.cta_button);
 })();

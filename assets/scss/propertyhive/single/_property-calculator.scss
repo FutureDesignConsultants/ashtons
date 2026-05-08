@@ -188,10 +188,22 @@
   .stamp-duty-calculator-results {
     margin-top: 1rem;
     .results {
-      p {
+      p,
+      a {
         @include font-size-16;
         font-weight: 300;
       }
+
+      a {
+        font-weight: 400;
+        color: #2d2d35;
+        transition: all 0.3s;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+
       //   input {
       //     padding-left: 0 !important;
       //   }

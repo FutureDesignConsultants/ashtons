@@ -227,10 +227,13 @@ $q = new WP_Query($args);
 									$img   = $property->get_main_photo_src('large');
 
 									$price    = $property->get_formatted_price();
+									// $bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
+									// if (!$bedrooms) {
+									// $bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
+									// }
 									$bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
-									// Fallback if your install uses a different key:
 									if (!$bedrooms) {
-									$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
+										$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
 									}
 								?>
 										<a class="mega-card" href="<?php the_permalink(); ?>">
@@ -640,7 +643,7 @@ $q = new WP_Query($args);
 															</svg>
 
 															<span
-																class="mega-card__beds"><?php echo esc_html((int)$bedrooms); ?>
+																class="mega-card__beds"><?php echo esc_html($bedrooms); ?>
 																bed</span>
 														</div>
 														<?php endif; ?>
@@ -805,6 +808,10 @@ $cta = $cta_map[$panel_type] ?? ['text' => 'Pre-launch', 'url' => home_url('/')]
 				$img   = $property->get_main_photo_src('large');
 				$price = $property->get_formatted_price();
 
+				// $bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
+				// if (!$bedrooms) {
+				// 	$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
+				// }
 				$bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
 				if (!$bedrooms) {
 					$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
@@ -910,6 +917,10 @@ echo wp_kses_post($title);
 				$img   = $property->get_main_photo_src('large');
 				$price = $property->get_formatted_price();
 
+				// $bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
+				// if (!$bedrooms) {
+				// 	$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
+				// }
 				$bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
 				if (!$bedrooms) {
 					$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);

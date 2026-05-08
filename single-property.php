@@ -4,8 +4,8 @@ get_header();
 if ( have_posts() ) :
     while ( have_posts() ) : the_post();
 ?>
-<div class="wrap">
-    <main id="primary" class="single-property property-grid-container bg-white">
+<div class="wrap single-property">
+    <main id="primary" class="property-grid-container bg-white">
 
         <div class="main-wrap text-dark-grey" data-anim="fade" data-delay="0.75">
             <?php get_template_part( 'template-parts/property', 'gallery' ); ?>

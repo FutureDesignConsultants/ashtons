@@ -343,7 +343,7 @@
       margin-top: 13rem;
     }
 
-    z-index: 1;
+    z-index: 0;
     position: relative;
 
     p,
@@ -971,6 +971,7 @@ footer {
   border-radius: 12px;
   margin-top: 0.5rem;
   padding-left: 10px;
+  z-index: 2;
 
   &.is-visible {
     display: block;

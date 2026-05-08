@@ -39,7 +39,7 @@ function mytheme_enqueue_assets() {
   // Your custom script — note the dependency on leaflet 👇
   wp_enqueue_script(
     'property-listing',
-    get_stylesheet_directory_uri() . '/js/property-listing.js',
+    get_stylesheet_directory_uri() . '/dist/js/property-listing.js',
     ['leaflet'], // 👈 ensures L is defined first
     '1.0',
     true
