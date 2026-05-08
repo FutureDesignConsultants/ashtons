@@ -589,6 +589,10 @@ $q = new WP_Query($args);
                         $property = new PH_Property(get_the_ID());
                         $img   = $property->get_main_photo_src('large');
                         $price = $property->get_formatted_price();
+						$bedrooms = (int) get_post_meta(get_the_ID(), '_bedrooms', true);
+						if (!$bedrooms) {
+							$bedrooms = (int) get_post_meta(get_the_ID(), 'bedrooms', true);
+						}
                       ?>
 
 										<div class="swiper-slide">
@@ -614,7 +618,7 @@ $q = new WP_Query($args);
 															class="mega-card__price"><?php echo esc_html($price); ?></span>
 														<?php endif; ?>
 
-														<?php if (!empty($bedrooms) && (int)$bedrooms > 0) : ?>
+														<?php if (!empty($bedrooms) && $bedrooms > 0) : ?>
 														<div class="flex align-center gap-8">
 															<svg width="20" height="15" viewBox="0 0 20 15" fill="none"
 																xmlns="http://www.w3.org/2000/svg">
