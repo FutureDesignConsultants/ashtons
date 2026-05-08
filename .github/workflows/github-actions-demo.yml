@@ -45,6 +45,6 @@ jobs:
             --exclude uploads/** \
             --exclude wflogs/** \
             --exclude-glob="*.log" \
-            ./themes/ashtons/ /public_html/wp-content/themes/ashtons/
+            ./ /public_html/wp-content/themes/ashtons/
           bye
           EOF
