@@ -202,12 +202,49 @@ add_filter('gform_field_validation_5_7', function ($result, $value) {
 
 }, 10, 2);
 
-add_filter('gform_datepicker_options_5_7', function ($options, $form_id, $field_id) {
+add_action('gform_enqueue_scripts_5', function () {
+    ?>
+    <script type="text/javascript">
+    (function($){
 
-    $options['minDate'] = 2;
-    return $options;
+        function applyRestrictions() {
 
-}, 10, 3);
+            var $input = $('#input_5_7');
+
+            if (!$input.length) return;
+
+            $input.datepicker('option', {
+                minDate: 2,
+                beforeShowDay: function(date) {
+
+                    var day = date.getDay();
+
+                    // ONLY allow Mon–Fri (1–5)
+                    return [(day >= 1 && day <= 5)];
+
+                }
+            });
+        }
+
+        // GF fires multiple render events — we must catch all of them
+        $(document).on('gform_post_render', function(e, formId) {
+
+            if (formId != 5) return;
+
+            // wait for GF to finish overwriting datepicker
+            setTimeout(applyRestrictions, 200);
+
+        });
+
+        // also apply on initial load
+        $(window).on('load', function(){
+            setTimeout(applyRestrictions, 300);
+        });
+
+    })(jQuery);
+    </script>
+    <?php
+});
 
 
 // Replaces Gravity Forms Submit Button
@@ -277,9 +314,9 @@ add_action('after_setup_theme', function() {
 
 
 // Hide WP Menu Bar when visiting front-end
-add_filter('show_admin_bar', function () {
-    return is_admin();
-});
+// add_filter('show_admin_bar', function () {
+//     return is_admin();
+// });
 
 /* :::::::::::: WYSIWYG SETTINGS ::::::::::::: */
 
@@ -409,3 +446,33 @@ $q = new WP_Query([
   'no_found_rows'  => true,
   'meta_query'     => $meta_query,
 ]);
+
+add_action('wp_footer', function () {
+    ?>
+    <script type="text/javascript">
+    (function($){
+
+        function hideTitle() {
+
+            // If GF confirmation is visible for form 5
+            if ($('#gform_confirmation_wrapper_5').length) {
+                $('.valuation-form .title').fadeOut(200);
+            }
+
+        }
+
+        // run on load
+        $(window).on('load', hideTitle);
+
+        // keep checking in case GF renders after
+        const observer = new MutationObserver(hideTitle);
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+    })(jQuery);
+    </script>
+    <?php
+});

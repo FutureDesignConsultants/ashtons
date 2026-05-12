@@ -29,7 +29,25 @@
     }
 
     .gform_confirmation_message {
-      margin-top: 2rem;
+      line-height: normal;
+      @include text-color(dark-grey);
+      @include font-size-60;
+      @include din(600);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      text-wrap: balance;
+
+      img {
+        width: 100px;
+      }
+
+      @include min-width(md) {
+        img {
+          width: 200px;
+        }
+      }
     }
 
     form {
@@ -79,7 +97,7 @@
         @include text-color(dark-grey);
         @include font-size-18;
         @include area(300);
-        line-height: normal;
+        line-height: normal !important;
         @include bg-color(off-white);
       }
 
