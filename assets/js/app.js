@@ -1249,6 +1249,28 @@ document.addEventListener("DOMContentLoaded", function () {
       closeEnquiryModal();
     }
   });
+
+  // Set Tracking Codes
+  function setTrackingCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  function getParam(param) {
+    let urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  let gclid = getParam("gclid");
+  let fbclid = getParam("fbclid");
+
+  if (gclid) setTrackingCookie("gclid", gclid, 30);
+  if (fbclid) setTrackingCookie("fbclid", fbclid, 30);
 });
 
 // GF init for pop up form

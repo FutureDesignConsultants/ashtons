@@ -476,3 +476,13 @@ add_action('wp_footer', function () {
     </script>
     <?php
 });
+
+// Send GCLID & FBCLID URL params o gravity forms
+
+add_filter('gform_field_value_gclid', function() {
+    return $_COOKIE['gclid'] ?? '';
+});
+
+add_filter('gform_field_value_fbclid', function() {
+    return $_COOKIE['fbclid'] ?? '';
+});
