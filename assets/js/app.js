@@ -1268,6 +1268,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let gclid = getParam("gclid");
   let fbclid = getParam("fbclid");
+  let addresURL = getParam("address");
+  const address_5_Input = document.querySelector("#field_5_15");
+  const form_5_title = document.querySelector(".valuation-form .title h1");
+
+  if (!addresURL) {
+    address_5_Input.style.display = "block";
+    form_5_title.textContent = "ACHIEVE THE BEST PRICE WITH ASHTONS";
+  } else {
+    address_5_Input.style.display = "none";
+  }
 
   if (gclid) setTrackingCookie("gclid", gclid, 30);
   if (fbclid) setTrackingCookie("fbclid", fbclid, 30);
