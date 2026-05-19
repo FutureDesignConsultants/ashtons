@@ -11,7 +11,7 @@
 				</svg>
 				<span>Back to search results</span>
 			</a>
-			<button class="flex gap-8 share-trigger js-open-share-modal" data-anim="fade" data-delay="0.75">
+			<button type="button" class="flex gap-8 share-trigger js-open-share-modal" data-anim="fade" data-delay="0.75">
 				<span>Share</span>
 
 				<svg class="share-icon" width="22" height="24" viewBox="0 0 29 31" fill="none"
@@ -753,40 +753,89 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	const shareTrigger = document.querySelector(".js-open-share-modal");
-	const shareModal = document.getElementById("shareModal");
+	const shareTrigger = document.querySelector(".share-trigger");
+	const shareModal = document.querySelector("#shareModal");
 	const closeButtons = document.querySelectorAll(".js-close-share-modal");
 	const copyBtn = document.querySelector(".js-copy-link");
 	const feedback = document.querySelector(".share-feedback");
 
-	if (shareTrigger && shareModal) {
-		function openShareModal() {
-			shareModal.classList.add("is-open");
-			shareModal.setAttribute("aria-hidden", "false");
-			document.body.style.overflow = "hidden";
-		}
+	// if (shareTrigger && shareModal) {
 
-		function closeShareModal() {
-			shareModal.classList.remove("is-open");
-			shareModal.setAttribute("aria-hidden", "true");
-			document.body.style.overflow = "";
-		}
+	// 	function openShareModal() {
+	// 		shareModal.classList.add("is-open");
+	// 		shareModal.setAttribute("aria-hidden", "false");
+	// 		document.body.style.overflow = "hidden";
+	// 		console.log('open');
+	// 	}
 
-		shareTrigger.addEventListener("click", function(e) {
-			e.preventDefault();
-			openShareModal();
-		});
+	// 	function closeShareModal() {
+	// 		shareModal.classList.remove("is-open");
+	// 		shareModal.setAttribute("aria-hidden", "true");
+	// 		document.body.style.overflow = "";
+	// 	}
 
-		closeButtons.forEach(function(btn) {
-			btn.addEventListener("click", closeShareModal);
-		});
+	// 	shareTrigger.addEventListener("click", (e) => {
+	// 		e.preventDefault();
+	// 		console.log('click');
+	// 		openShareModal();
+	// 	});
 
-		document.addEventListener("keydown", function(e) {
-			if (e.key === "Escape" && shareModal.classList.contains("is-open")) {
-				closeShareModal();
-			}
-		});
+	// 	closeButtons.forEach(function(btn) {
+	// 		btn.addEventListener("click", closeShareModal);
+	// 	});
+
+	// 	document.addEventListener("keydown", function(e) {
+	// 		if (e.key === "Escape" && shareModal.classList.contains("is-open")) {
+	// 			closeShareModal();
+	// 		}
+	// 	});
+	// }
+
+	function openShareModal() {
+		if (!shareModal) return;
+
+		shareModal.classList.add("is-open");
+		shareModal.setAttribute("aria-hidden", "false");
+
+		document.body.style.overflow = "hidden";
 	}
+
+	function closeShareModal() {
+		if (!shareModal) return;
+
+		shareModal.classList.remove("is-open");
+		shareModal.setAttribute("aria-hidden", "true");
+
+		document.body.style.overflow = "";
+	}
+
+	// Open modal using delegated click
+	document.addEventListener("click", (e) => {
+
+		const shareTrigger = e.target.closest(".js-open-share-modal");
+
+		if (!shareTrigger) return;
+
+		e.preventDefault();
+		openShareModal();
+	});
+
+	// Close modal buttons
+	closeButtons.forEach((btn) => {
+		btn.addEventListener("click", (e) => {
+			e.preventDefault();
+			closeShareModal();
+		});
+	});
+
+	// ESC key close
+	document.addEventListener("keydown", (e) => {
+
+		if (e.key === "Escape" && shareModal?.classList.contains("is-open")) {
+			closeShareModal();
+		}
+
+	});
 
 	function fallbackCopyText(text) {
 		const textArea = document.createElement("textarea");
