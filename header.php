@@ -888,7 +888,15 @@ echo wp_kses_post($title);
 					<div class="latest-land">
 						<h3>Latest land &amp; new homes</h3>
 
-						<?php
+						
+						
+						
+						
+	<?php
+
+	// land & New Homes ID
+	$officeID = 767;
+
 	$args = [
 		'post_type'      => 'property',
 		'post_status'    => 'publish',
@@ -907,7 +915,13 @@ echo wp_kses_post($title);
 				'value'   => 'yes',
 				'compare' => '=',
 			],
-		],
+			[
+				'key'     => '_office_id',
+				'value'   => $officeID,
+				'compare' => '=',
+				'type'    => 'NUMERIC',
+			]
+		]
 	];
 
 	$q = new WP_Query($args);

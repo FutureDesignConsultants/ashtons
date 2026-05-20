@@ -486,3 +486,17 @@ add_filter('gform_field_value_gclid', function() {
 add_filter('gform_field_value_fbclid', function() {
     return $_COOKIE['fbclid'] ?? '';
 });
+
+
+// Instagram Dynamic Feed
+add_action('wp_ajax_load_instagram_feed', 'load_instagram_feed');
+add_action('wp_ajax_nopriv_load_instagram_feed', 'load_instagram_feed');
+
+function load_instagram_feed() {
+
+    $feed_id = intval($_GET['feed_id']);
+
+    echo do_shortcode('[instagram-feed feed="' . $feed_id . '"]');
+
+    wp_die();
+}
