@@ -8,7 +8,7 @@ if ( have_posts() ) :
 <section class="branch-hero">
 	<div class="wrap branch-inner">
 
-		<div class="branch-title flex flex-col justify-center align-center">
+		<div class="branch-title flex flex-col justify-center align-center <?php echo is_single(4651) ? 'no-properties' : ''; ?>">
 			<?php
             $teamImage = get_field('team_image', get_the_ID());
             if ($teamImage) : ?>
@@ -48,7 +48,8 @@ if ( have_posts() ) :
 			<?php endif; ?>
 			<p class="excerpt"><?php echo get_field('excerpt', get_the_ID()); ?></p>
 		</div>
-
+			
+		<?php if ( !is_single(4651) ) : ?>
 		<div class="latest flex justify-center">
 			<p>View our latest listings</p>
 		</div>
@@ -83,6 +84,12 @@ if ( have_posts() ) :
 
 
                 $office_id = get_field('office', get_the_ID());
+
+				// if Eccleston - change to St Helens properties
+				if ( $office_id[0] == 759 ) {
+					$office_id[0] = 772;
+				}
+
                 $selected_office_id = $office_id ? $office_id : 0;
 
                 $branch_meta_query = [
@@ -275,6 +282,7 @@ if ( have_posts() ) :
 					all listings</a></p>
 			<?php endif; ?>
 		</div>
+		<?php endif; ?>
 
 	</div>
 </section>
@@ -363,7 +371,7 @@ if ( have_posts() ) :
 			</div>
 
 			<div class="content">
-				<div class="branch-stats">
+				<!-- <div class="branch-stats">
 					<div class="flex gap-16 title">
 						<h2 class="flex gap-16 text-dark-grey">Branch Stats </h2>
 						<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
@@ -396,7 +404,7 @@ if ( have_posts() ) :
 					</ul>
 					<?php endif; ?>
 
-				</div>
+				</div> -->
 				<div class="branch-detail">
 					<div class="flex gap-16 title">
 						<h2>Details</h2>
@@ -508,8 +516,11 @@ if ( have_posts() ) :
 				</a>
 			</div>
 		</main>
+
 	</div>
 </section>
+
+	<?php get_template_part( 'blocks/stats-v1/stats-v1' ); ?>
 
 <?php
     endwhile;

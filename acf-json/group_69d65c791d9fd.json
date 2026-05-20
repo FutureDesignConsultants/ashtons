@@ -293,6 +293,13 @@
                 "operator": "==",
                 "value": "acf\/acf-stats-v1"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "branches"
+            }
         ]
     ],
     "menu_order": 0,
@@ -305,5 +312,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776165853
+    "modified": 1779272062
 }

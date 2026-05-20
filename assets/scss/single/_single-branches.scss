@@ -8,6 +8,14 @@
     position: relative;
     z-index: 100;
 
+    &.no-properties {
+      margin-bottom: 6rem;
+
+      @include min-width(md) {
+        margin-bottom: 8rem;
+      }
+    }
+
     .office-image,
     .team-image {
       position: absolute;
@@ -822,7 +830,7 @@
           }
 
           @include min-width(md) {
-            grid-column: span 6;
+            grid-column: span 10;
           }
         }
 
