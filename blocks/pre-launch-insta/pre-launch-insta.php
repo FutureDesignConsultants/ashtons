@@ -27,24 +27,25 @@ $block_classes = get_block_classes('pre-launch-insta');
 
             <select id="account-select">
                 
-                        <?php
-                        $accounts = array(
-                            "Stockton Health" => 3,
-                            "Newton" => 4,
-                            "Padgate" => 5,
-                            "Widnes" => 6,
-                            "Warrington Lettings Department" => 7,
-                            "St Helens Lettings" => 8,
-                            "St Helens" => 9,
-                            "Newton-Le-Willows" => 10,
-                            "Leigh" => 11,
-                            "Land and New Homes" => 12,
-                            "Great Sankey" => 13,
-                            "Eccleston" => 14,
-                            "Culcheth" => 15,
-                            "Ashton-In-Makerfield" => 16
-                        )
-                        ?>
+                <?php
+                    $accounts = array(
+                        "Stockton Health" => 3,
+                        "Newton" => 4,
+                        "Padgate" => 5,
+                        "Widnes" => 6,
+                        "Warrington Lettings Department" => 7,
+                        "St Helens Lettings" => 8,
+                        "St Helens" => 9,
+                        "Newton-Le-Willows" => 10,
+                        "Leigh" => 11,
+                        "Land and New Homes" => 12,
+                        "Great Sankey" => 13,
+                        "Eccleston" => 14,
+                        "Culcheth" => 15,
+                        "Ashton-In-Makerfield" => 16
+                    )
+                ?>
+
                 <option value="2">All Branches</option>
 
                 <?php foreach($accounts as $name => $feed_id) : ?>
@@ -71,7 +72,16 @@ $block_classes = get_block_classes('pre-launch-insta');
         fetch('/wp-admin/admin-ajax.php?action=load_instagram_feed&feed_id=' + feedID)
             .then(response => response.text())
             .then(html => {
-                document.getElementById('instagram-feed-container').innerHTML = html;
+
+                const container = document.getElementById('instagram-feed-container');
+
+                container.innerHTML = html;
+
+                // Reinitialize Smash Balloon feed
+                if (typeof sbi_init === 'function') {
+                    sbi_init();
+                }
+
             });
 
     });
