@@ -29,21 +29,21 @@ $block_classes = get_block_classes('pre-launch-insta');
                 <select id="account-select">
                     
                     <?php
+                        // Name and shortcode ID for Insta feed
                         $accounts = array(
                             "Stockton Health" => 3,
-                            "Newton" => 4,
+                            "Newton-Le-Willows" => 4,
                             "Padgate" => 5,
                             "Widnes" => 6,
                             "Warrington Lettings Department" => 7,
                             "St Helens Lettings" => 8,
                             "St Helens" => 9,
-                            "Newton-Le-Willows" => 10,
-                            "Leigh" => 11,
-                            "Land and New Homes" => 12,
-                            "Great Sankey" => 13,
-                            "Eccleston" => 14,
-                            "Culcheth" => 15,
-                            "Ashton-In-Makerfield" => 16
+                            "Leigh" => 10,
+                            "Land and New Homes" => 11,
+                            "Great Sankey" => 12,
+                            "Eccleston" => 13,
+                            "Culcheth" => 14,
+                            "Ashton-In-Makerfield" => 15
                         )
                     ?>
 
