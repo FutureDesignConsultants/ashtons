@@ -7,7 +7,7 @@
             "label": "Team member image",
             "name": "team_member_image",
             "aria-label": "",
-            "type": "image",
+            "type": "image_aspect_ratio_crop",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,7 +16,11 @@
                 "class": "",
                 "id": ""
             },
+            "crop_type": "aspect_ratio",
+            "aspect_ratio_width": 500,
+            "aspect_ratio_height": 500,
             "return_format": "array",
+            "preview_size": "medium",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -25,8 +29,7 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
+            "allow_in_bindings": 0
         },
         {
             "key": "field_69d4f0e7d1008",
@@ -73,7 +76,7 @@
         {
             "key": "field_69e0fafda7fac",
             "label": "Role",
-            "name": "role",
+            "name": "description",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -201,5 +204,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776945694
+    "modified": 1779378038
 }

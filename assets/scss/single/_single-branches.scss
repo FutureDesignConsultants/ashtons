@@ -911,7 +911,7 @@
           .employee-img {
             aspect-ratio: 59 / 53;
             border-radius: 12px;
-            width: 30%;
+            max-width: 30%;
             flex-shrink: 0;
 
             @include max-width(sm) {
