@@ -18,7 +18,7 @@
 
 	<!-- Responsive Specific Metas
   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
 
@@ -26,12 +26,13 @@
 
 	<!-- Adobe Fonts
   ================================================== -->
-	<link href="" rel="stylesheet">
+	<link rel="preconnect" href="https://use.typekit.net">
+	<link rel="preconnect" href="https://p.typekit.net" crossorigin>
 
 
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/favicons/favicon.ico">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/ashtons-favicon.png">
 	<link rel="apple-touch-icon"
 		href="<?php echo get_template_directory_uri(); ?>/assets/favicons/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72"

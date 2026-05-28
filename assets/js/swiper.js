@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleButtons.forEach((b) => {
         const isActive = b.dataset.toggle === key;
         b.classList.toggle("is-active", isActive);
-        b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        //b.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
 
       let activePanel = null;

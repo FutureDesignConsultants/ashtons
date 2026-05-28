@@ -500,3 +500,8 @@ function load_instagram_feed() {
 
     wp_die();
 }
+
+// Theme title
+add_action( 'after_setup_theme', function() {
+    add_theme_support( 'title-tag' );
+});

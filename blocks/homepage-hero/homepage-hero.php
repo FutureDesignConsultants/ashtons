@@ -13,28 +13,66 @@ $block_classes = get_block_classes('homepage-hero');
 
 		<h1>Ashtons Estate Agents</h1>
 
-		<div class="flex align-center justify-center gap-16 toggle-wrap md:gap-32" role="tablist">
+		<div class="flex align-center justify-center gap-16 toggle-wrap md:gap-32" role="tablist" aria-label="Property search modes">
 
-			<button type="button" class="toggle-btn is-active" data-toggle="buy" aria-pressed="true" data-anim="fade"
-				data-duration="0.5" data-y="90">
+			<a 
+				class="toggle-btn is-active" 
+				data-toggle="buy" 
+				data-anim="fade"
+				data-duration="0.5" 
+				data-y="90"
+				aria-selected="true"
+				aria-controls="panel-buy"
+				tabindex="0"
+				role="tab"
+				id="tab-buy"
+				>
 				BUY
-			</button>
+			</a>
 
-			<button type="button" class="toggle-btn" data-toggle="rent" aria-pressed="false" data-anim="fade"
-				data-delay="0.3" data-duration="0.5" data-y="90">
+			<a
+				class="toggle-btn" 
+				data-toggle="rent" 
+				data-anim="fade"
+				data-delay="0.3" 
+				data-duration="0.5" 
+				data-y="90"
+				aria-selected="false"
+				aria-controls="panel-rent"
+				tabindex="-1"
+				role="tab"
+				id="tab-rent"
+				>
 				RENT
-			</button>
+			</a>
 
-			<button type="button" class="toggle-btn" data-toggle="sell" aria-pressed="false" data-anim="fade"
-				data-delay="0.6" data-duration="0.5" data-y="90">
+			<a 
+				class="toggle-btn" 
+				data-toggle="sell" 
+				data-anim="fade"
+				data-delay="0.6" 
+				data-duration="0.5" 
+				data-y="90"
+				aria-selected="false"
+				aria-controls="panel-sell"
+				tabindex="-1"
+				role="tab"
+				id="tab-sell"
+				>
 				SELL
-			</button>
+			</a>
 
 		</div>
 
 		<div class="toggled-content" data-anim="fade" data-delay="1.05" data-duration="0.5">
 
-			<div class="toggle-panel is-active" data-panel="buy">
+			<div 
+				class="toggle-panel is-active" 
+				data-panel="buy"
+				role="tabpanel"
+				id="panel-buy"
+				aria-labelledby="tab-buy"
+				>
 				<div class="hero-search" data-anim="fade" data-delay="0.9" data-duration="0.5">
 
 					<form action="<?php echo esc_url(home_url('/property-search/')); ?>" method="get"
@@ -307,7 +345,14 @@ $count = $q->post_count;					?>
 
 			</div>
 
-			<div class="toggle-panel" data-panel="rent" hidden>
+			<div 
+				class="toggle-panel" 
+				data-panel="rent" 
+				role="tabpanel"
+				id="panel-rent"
+				aria-labelledby="tab-rent"
+				hidden
+				>
 				<div class="hero-search">
 
 					<form action="<?php echo esc_url(home_url('/property-search/')); ?>" method="get"
@@ -552,7 +597,14 @@ echo wp_kses_post($title);
 
 		</div>
 
-		<div class="toggle-panel" data-panel="sell" hidden>
+		<div 
+			class="toggle-panel" 
+			data-panel="sell" 
+			role="tabpanel"
+			id="panel-sell"
+			aria-labelledby="tab-sell"
+			hidden
+			>
 			<div class="hero-search">
 
 				<form action="<?php echo esc_url(home_url('/property-search/')); ?>" method="get"
@@ -814,6 +866,58 @@ echo wp_kses_post($title);
 	let propertySwiper = null;
 	const hero = document.querySelector(".homepage-hero");
 	if (!hero) return;
+
+	const tabs = hero.querySelectorAll('[role="tab"]');
+	const panels = hero.querySelectorAll('[role="tabpanel"]');
+
+	const setActiveTab = (name, { focusTab = false } = {}) => {
+
+		tabs.forEach((tab) => {
+			const isActive = tab.dataset.toggle === name;
+
+			tab.classList.toggle('is-active', isActive);
+			tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+			tab.tabIndex = isActive ? 0 : -1;
+
+			if (isActive && focusTab) {
+			tab.focus();
+			}
+		});
+
+		panels.forEach((panel) => {
+			const isActive = panel.dataset.panel === name;
+
+			panel.classList.toggle('is-active', isActive);
+			panel.hidden = !isActive;
+
+			panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+		});
+	};
+
+	tabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			const value = tab.dataset.toggle;
+			setActiveTab(value);
+		});
+
+		tab.addEventListener('keydown', (e) => {
+			let index = Array.from(tabs).indexOf(tab);
+
+			if (e.key === 'ArrowRight') {
+			e.preventDefault();
+			const next = tabs[(index + 1) % tabs.length];
+			next.click();
+			next.focus();
+			}
+
+			if (e.key === 'ArrowLeft') {
+			e.preventDefault();
+			const prev = tabs[(index - 1 + tabs.length) % tabs.length];
+			prev.click();
+			prev.focus();
+			}
+		});
+	});
 
 	// Collect all dropdowns
 	let officeSelects = [

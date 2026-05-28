@@ -169,10 +169,10 @@ function mytheme_enqueue_assets() {
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');
 
 
-function enqueue_adobe_fonts() {
-    wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/zrw2wpa.css', false);
-}
-add_action('wp_enqueue_scripts', 'enqueue_adobe_fonts');
+// function enqueue_adobe_fonts() {
+//     wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/zrw2wpa.css', false);
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_adobe_fonts');
 
 function enqueue_typekit_fonts() {
     wp_enqueue_style(

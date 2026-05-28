@@ -71,7 +71,8 @@
 		</div>
 	</div>
 
-	<div class="valuation-modal enquiry-form" id="enquiry-modal">
+	<?php if ( is_singular( 'branches' ) ) : ?>
+			<div class="valuation-modal enquiry-form" id="enquiry-modal">
 		<div class="valuation-modal-content form-wrapper">
 			<div class="flex align-center justify-between">
 				<h2>Speak to our friendly team</h2>
@@ -187,6 +188,7 @@
 			<?php echo do_shortcode('[gravityform id="1" title="false"]'); ?>
 		</div>
 	</div>
+	<?php endif; ?>
 
 
 

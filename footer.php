@@ -36,20 +36,35 @@ $youtube = get_field('youtube', 'option');
 
 			<div class="top grid grid-cols-12">
 				<div class="left">
-					<div class="flex justify-center flex-col gap-32 toggle-wrap" role="tablist">
+					<div class="flex justify-center flex-col gap-32 toggle-wrap">
 
 						<div class="buttons flex gap-24">
-							<button type="button" class="toggle-btn is-active" data-toggle="buy" aria-pressed="true">
+							<a 
+								class="toggle-btn is-active" 
+								data-toggle="buy"
+								role="button"
+								tabindex="0"
+								>
 								BUY
-							</button>
+							</a>
 
-							<button type="button" class="toggle-btn" data-toggle="rent" aria-pressed="false">
+							<a
+								class="toggle-btn" 
+								data-toggle="rent" 
+								role="button"
+								tabindex="0"
+								>
 								RENT
-							</button>
+							</a>
 
-							<button type="button" class="toggle-btn" data-toggle="sell" aria-pressed="false">
+							<a 
+								class="toggle-btn" 
+								data-toggle="sell"
+								role="button"
+								tabindex="0"
+								>
 								SELL
-							</button>
+							</a>
 						</div>
 
 						<div class="toggled-content">
