@@ -46,6 +46,8 @@
 
 	<!-- Tracking Snippets
 	================================================== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+
 
 </head>
 

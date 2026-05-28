@@ -889,3 +889,120 @@ footer {
     display: none;
   }
 }
+
+// Cookie Consent
+
+.cc-window.cc-floating {
+  position: fixed !important;
+  bottom: 2% !important;
+  right: 0 !important;
+  left: 1% !important;
+  width: fit-content;
+  max-width: 400px !important;
+  border-radius: 6px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  box-sizing: border-box;
+  flex-direction: column !important;
+  /* border-radius: 6px; */
+  gap: 1rem;
+  z-index: 999999999999;
+  background-color: #faf8f4;
+  border: 2px solid #c1d42f;
+  @include area(400);
+}
+
+.cc-compliance {
+  display: flex !important;
+  gap: 1.5rem;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+.cc-theme-classic .cc-btn {
+  text-decoration: none;
+}
+.cc-compliance .cc-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border-radius: 6px;
+  max-width: fit-content;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.cc-compliance .cc-btn.cc-allow {
+  background-color: #c1d42f;
+  color: #2d2d35;
+}
+
+.cc-compliance .cc-btn.cc-deny {
+  background-color: #2d2d35;
+  color: #ffffff;
+}
+
+.cc-theme-classic .cc-btn:last-child {
+  min-width: auto !important;
+}
+
+.cc-message {
+  margin: 0;
+  line-height: 1.4;
+  color: #2d2d35;
+  font-size: clamp(1rem, 0.8rem + 1vw, 1.125rem);
+}
+
+.cc-message a {
+  @include area();
+  color: #2d2d35;
+  font-size: clamp(1rem, 0.8rem + 1vw, 1.125rem);
+  transition: all ease-in-out 0.4s;
+
+  &:hover {
+    color: #ff2e69;
+  }
+}
+
+.cc-compliance .cc-btn.cc-allow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateY(101%);
+  transition: transform 0.35s ease;
+  background: #ff2e69;
+  z-index: -1;
+}
+
+.cc-compliance .cc-btn.cc-deny::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateY(101%);
+  transition: transform 0.35s ease;
+  background: #c1d42f;
+  z-index: -1;
+}
+
+.cc-compliance .cc-btn.cc-allow:hover {
+  color: #ffffff;
+}
+
+.cc-compliance .cc-btn.cc-deny:hover {
+  color: #2d2d35;
+}
+
+.cc-compliance .cc-btn.cc-allow:hover::before,
+.cc-compliance .cc-btn.cc-allow:focus-visible::before,
+.cc-compliance .cc-btn.cc-deny:hover::before,
+.cc-compliance .cc-btn.cc-deny:focus-visible::before {
+  transform: translateY(0);
+}

@@ -505,3 +505,59 @@ function load_instagram_feed() {
 add_action( 'after_setup_theme', function() {
     add_theme_support( 'title-tag' );
 });
+
+// Google Analytics & GDPR
+    function mytheme_cookie_consent_init() {
+    ?>
+<script>
+function enableAnalytics() {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=KEY';
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'KEY');
+}
+
+function removeCookieBanner() {
+    const banner = document.querySelector('.cc-window');
+    if (banner) banner.remove();
+}
+
+window.addEventListener("load", function() {
+    window.cookieconsent.initialise({
+        type: "opt-in",
+        theme: "classic",
+        content: {
+            message: 'To provide the best experience, we use cookies.',
+            allow: "Accept",
+            deny: "Reject",
+            link: "Learn more",
+            href: "/cookie-policy"
+        },
+        position: "bottom-right",
+
+        onInitialise: function() {
+            if (this.getStatus() === 'allow') {
+                enableAnalytics();
+                removeCookieBanner();
+            }
+        },
+
+        onStatusChange: function(status) {
+            if (status === 'allow') enableAnalytics();
+            removeCookieBanner();
+        }
+    });
+});
+</script>
+<?php
+    }
+add_action('wp_footer', 'mytheme_cookie_consent_init', 50);
