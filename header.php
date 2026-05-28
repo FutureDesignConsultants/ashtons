@@ -29,6 +29,10 @@
 	<link rel="preconnect" href="https://use.typekit.net">
 	<link rel="preconnect" href="https://p.typekit.net" crossorigin>
 
+	<!-- Pre connect - Streets
+  ================================================== -->
+	<link rel="preconnect" href="https://apollo.street.co.uk">
+
 
 	<!-- Favicons
 	================================================== -->

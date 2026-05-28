@@ -242,9 +242,13 @@ $count = $q->post_count;					?>
 								<a class="mega-card" href="<?php the_permalink(); ?>">
 									<div class="mega-card__media">
 										<?php if (!empty($img)) : ?>
-										<img src="<?php echo esc_url($img); ?>"
+										<img 
+											src="<?php echo esc_url($img); ?>"
 											alt="<?php echo esc_attr(get_the_title()); ?>" loading="eager"
-											decoding="async">
+											decoding="async"
+											loading="eager"
+											fetchpriority="high"
+											>
 										<?php endif; ?>
 									</div>
 
@@ -503,8 +507,11 @@ $rent_query = new WP_Query([
 									<div class="mega-card__media rent">
 										<?php if (!empty($img)) : ?>
 										<img src="<?php echo esc_url($img); ?>"
-											alt="<?php echo esc_attr(get_the_title()); ?>" loading="eager"
-											decoding="async">
+											alt="<?php echo esc_attr(get_the_title()); ?>" 
+											loading="eager"
+											decoding="async"
+											fetchpriority="high"
+											>
 										<?php endif; ?>
 									</div>
 
@@ -761,8 +768,13 @@ $sell_query = new WP_Query([
 
 
 									<?php if (!empty($img)) : ?>
-									<img src="<?php echo esc_url($img); ?>"
-										alt="<?php echo esc_attr(get_the_title()); ?>" loading="eager" decoding="async"">
+									<img 
+										src="<?php echo esc_url($img); ?>"
+										alt="<?php echo esc_attr(get_the_title()); ?>" 
+										loading="eager" 
+										decoding="async"
+										fetchpriority="high"
+										>
 									<?php endif; ?>
 
 								</div>
