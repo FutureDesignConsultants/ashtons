@@ -90,6 +90,16 @@
     }
 
     h1 {
+      @include area(400);
+      @include font-size-20;
+      line-height: 85%;
+      text-align: center;
+      @include text-color(off-white);
+      margin-bottom: 2rem;
+      text-transform: none;
+    }
+
+    h2 {
       letter-spacing: -2px;
       @include text-color(green);
       @include din(600);
@@ -141,6 +151,7 @@
         line-height: 85%;
         @include din(600);
         @include font-size-40;
+        width: fit-content;
       }
     }
   }

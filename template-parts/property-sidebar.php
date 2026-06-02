@@ -243,7 +243,7 @@ if ( $show_calculator && class_exists('PH_Property') ) {
 				)
 			);
 		} else {
-			echo esc_html( $raw_price );
+			echo wp_kses_post($raw_price);
 		}
 	}
 	?>

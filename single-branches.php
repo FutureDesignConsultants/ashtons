@@ -38,7 +38,8 @@ if ( have_posts() ) :
 			</div>
 			<?php endif; ?>
 
-			<h1>Hello <span><?php the_title(); ?></span></h1>
+			<h1>Estate Agent in <?php the_title(); ?></h1>
+			<h2>Hello <span><?php the_title(); ?></span></h2>
 			<?php $phone = get_field('telephone', get_the_ID()); ?>
 
 			<?php if ($phone): ?>
