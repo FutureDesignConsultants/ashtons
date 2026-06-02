@@ -119,6 +119,10 @@
 }
 
 .property-filters {
+  h1 {
+    display: none;
+  }
+
   .property-search-form:has(.label-buy.is-active) .search-submit svg rect {
     fill: #c1d42f !important;
   }

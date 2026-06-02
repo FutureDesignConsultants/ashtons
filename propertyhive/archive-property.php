@@ -17,6 +17,7 @@ get_header( 'propertyhive' ); global $wpdb; ?>
 <section class="property-filters bg-dark-grey text-white">
 	<div class="wrap">
 		<div id="ph-search">
+			<h1>Proprty Listings</h1>
 			<div id="ph-search-controls">
 				<?php get_template_part('partials/property-search-controls'); ?>
 			</div>
