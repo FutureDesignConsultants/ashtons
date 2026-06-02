@@ -230,22 +230,34 @@ if ( $show_calculator && class_exists('PH_Property') ) {
 			<?php endif; ?>
 			<h3 data-anim="fade" data-y="60" class="">
 				<?php
-	if ( class_exists('PH_Property') ) {
-		$property  = new PH_Property( get_the_ID() );
-		$raw_price = $property->get_formatted_price();
+	// if ( class_exists('PH_Property') ) {
+	// 	$property  = new PH_Property( get_the_ID() );
+	// 	$raw_price = $property->get_formatted_price();
 
-		if ( stripos( $raw_price, 'commercial-price' ) !== false ) {
-			echo esc_html(
-				trim(
-					wp_strip_all_tags(
-						html_entity_decode( $raw_price, ENT_QUOTES, 'UTF-8' )
-					)
-				)
-			);
-		} else {
-			echo wp_kses_post($raw_price);
-		}
-	}
+	// 	if ( stripos( $raw_price, 'commercial-price' ) !== false ) {
+	// 		echo esc_html(
+	// 			trim(
+	// 				wp_strip_all_tags(
+	// 					html_entity_decode( $raw_price, ENT_QUOTES, 'UTF-8' )
+	// 				)
+	// 			)
+	// 		);
+	// 	} else {
+	// 		echo esc_html( $raw_price );
+	// 	}
+	// }
+	if ( class_exists('PH_Property') ) {
+    $property  = new PH_Property( get_the_ID() );
+    $raw_price = $property->get_formatted_price();
+
+    echo esc_html(
+        trim(
+            wp_strip_all_tags(
+                html_entity_decode( $raw_price, ENT_QUOTES, 'UTF-8' )
+            )
+        )
+    );
+}
 	?>
 			</h3>
 			<h1 data-anim="fade" data-y="60" data-delay="0.3">
