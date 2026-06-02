@@ -892,6 +892,10 @@ footer {
 
 // Cookie Consent
 
+.cc-bottom {
+  display: none;
+}
+
 .cc-window.cc-floating {
   position: fixed !important;
   bottom: 2% !important;
@@ -913,6 +917,16 @@ footer {
   background-color: #faf8f4;
   border: 2px solid #c1d42f;
   @include area(400);
+
+  @include max-width(sm) {
+    right: 2% !important;
+    left: 2% !important;
+    max-width: none !important;
+
+    span {
+      text-align: center;
+    }
+  }
 }
 
 .cc-compliance {
