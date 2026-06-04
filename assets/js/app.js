@@ -1233,22 +1233,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setValuationLocation();
   });
 
-  // Populate dynamic postcode field in valuation form
-  function populateValuationPostcode() {
-    const postcode = sessionStorage.getItem("valuation_postcode");
-
-    if (!postcode) return;
-
-    const field = document.querySelector("#input_5_16");
-
-    if (!field) return;
-
-    field.value = postcode;
-
-    field.dispatchEvent(new Event("input", { bubbles: true }));
-    field.dispatchEvent(new Event("change", { bubbles: true }));
-  }
-
   // enquiry popup/modal:
 
   const enquiryModal = document.getElementById("enquiry-modal");
@@ -1325,8 +1309,23 @@ jQuery(document).on("gform_post_render", function (event, formId) {
   }
 });
 
-// dynamically adds postcode field to valuation form
+// Populate dynamic postcode field in valuation form
 document.addEventListener("DOMContentLoaded", populateValuationPostcode);
+
+function populateValuationPostcode() {
+  const postcode = sessionStorage.getItem("valuation_postcode");
+
+  if (!postcode) return;
+
+  const field = document.querySelector("#input_5_16");
+
+  if (!field) return;
+
+  field.value = postcode;
+
+  field.dispatchEvent(new Event("input", { bubbles: true }));
+  field.dispatchEvent(new Event("change", { bubbles: true }));
+}
 
 jQuery(document).on("gform_post_render", function (event, formId) {
   if (formId === 5) {
