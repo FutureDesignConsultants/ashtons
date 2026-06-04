@@ -1056,6 +1056,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
+      const postcodeHiddenField = document.querySelector("#input_4_16");
+
+      if (postcodeHiddenField) {
+        postcodeHiddenField.value = postcode;
+      }
+
       button.classList.add("loading");
 
       fetch(
@@ -1153,6 +1159,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!postcode) {
           alert("Enter postcode");
           return;
+        }
+
+        const postcodeHiddenField = document.querySelector("#input_4_16");
+
+        if (postcodeHiddenField) {
+          postcodeHiddenField.value = postcode;
         }
 
         button.classList.add("loading");
