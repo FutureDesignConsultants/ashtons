@@ -572,3 +572,8 @@ function remove_jquery_migrate( $scripts ) {
     }
 }
 add_action( 'wp_default_scripts', 'remove_jquery_migrate' );
+
+
+add_filter( 'gform_field_value_property_name', function() {
+    return get_the_title();
+} );
