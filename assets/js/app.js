@@ -1056,11 +1056,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const postcodeHiddenField = document.querySelector("#input_5_16");
-
-      if (postcodeHiddenField) {
-        postcodeHiddenField.value = postcode;
-      }
+      sessionStorage.setItem("valuation_postcode", postcode);
 
       button.classList.add("loading");
 
@@ -1161,11 +1157,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        const postcodeHiddenField = document.querySelector("#input_5_16");
-
-        if (postcodeHiddenField) {
-          postcodeHiddenField.value = postcode;
-        }
+        sessionStorage.setItem("valuation_postcode", postcode);
 
         button.classList.add("loading");
 
@@ -1241,6 +1233,22 @@ document.addEventListener("DOMContentLoaded", function () {
     setValuationLocation();
   });
 
+  // Populate dynamic postcode field in valuation form
+  function populateValuationPostcode() {
+    const postcode = sessionStorage.getItem("valuation_postcode");
+
+    if (!postcode) return;
+
+    const field = document.querySelector("#input_5_16");
+
+    if (!field) return;
+
+    field.value = postcode;
+
+    field.dispatchEvent(new Event("input", { bubbles: true }));
+    field.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
   // enquiry popup/modal:
 
   const enquiryModal = document.getElementById("enquiry-modal");
@@ -1314,5 +1322,14 @@ jQuery(document).on("gform_post_render", function (event, formId) {
         $field.datepicker("refresh");
       }
     }, 50);
+  }
+});
+
+// dynamically adds postcode field to valuation form
+document.addEventListener("DOMContentLoaded", populateValuationPostcode);
+
+jQuery(document).on("gform_post_render", function (event, formId) {
+  if (formId === 5) {
+    populateValuationPostcode();
   }
 });
