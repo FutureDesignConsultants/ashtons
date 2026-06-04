@@ -1056,7 +1056,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const postcodeHiddenField = document.querySelector("#input_4_16");
+      const postcodeHiddenField = document.querySelector("#input_5_16");
 
       if (postcodeHiddenField) {
         postcodeHiddenField.value = postcode;
@@ -1161,7 +1161,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        const postcodeHiddenField = document.querySelector("#input_4_16");
+        const postcodeHiddenField = document.querySelector("#input_5_16");
 
         if (postcodeHiddenField) {
           postcodeHiddenField.value = postcode;
