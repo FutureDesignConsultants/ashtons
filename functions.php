@@ -574,6 +574,15 @@ function remove_jquery_migrate( $scripts ) {
 add_action( 'wp_default_scripts', 'remove_jquery_migrate' );
 
 
+// Arrange a viewing form
 add_filter( 'gform_field_value_property_name', function() {
     return get_the_title();
+} );
+
+add_filter( 'gform_field_value_branch_name', function() {
+    $property_id = get_the_ID();
+
+    $office_id = get_post_meta( $property_id, '_office_id', true );
+
+    return $office_id ? get_the_title( $office_id ) : '';
 } );
