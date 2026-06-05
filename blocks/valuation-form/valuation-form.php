@@ -25,3 +25,10 @@ $block_classes = get_block_classes('valuation-form');
 		</div>
 	</div>
 </section>
+
+<script>
+const postcode =
+  params.get("postcode") ||
+  sessionStorage.getItem("valuation_postcode");
+  postcodeEl.value = postcode;	
+</script>
