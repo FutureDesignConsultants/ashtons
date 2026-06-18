@@ -276,15 +276,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
+document.addEventListener('submit', function(e) {
 
-gform.addAction('gform/submission/pre_submission', function(form) {
+    if (e.target.id === 'gform_4') {
 
-    if (form.formId != 4) {
-        return;
+        const postcode = document.getElementById('postcode').value;
+
+        document.getElementById('input_4_10').value = postcode;
+
+        alert('Postcode being submitted: ' + postcode);
     }
-
-    document.getElementById('input_4_10').value =
-        document.getElementById('postcode').value;
 
 });
 	</script>
