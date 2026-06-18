@@ -40,7 +40,8 @@ $block_classes = get_block_classes('pre-launch-insta');
                             "Great Sankey" => 12,
                             "Eccleston" => 13,
                             "Culcheth" => 14,
-                            "Ashton-In-Makerfield" => 15
+                            "Ashton-In-Makerfield" => 15,
+                            "Liverpool" => 16
                         )
                     ?>
 

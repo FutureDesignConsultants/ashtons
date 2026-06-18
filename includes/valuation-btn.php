@@ -275,4 +275,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 });
+
+
+gform.addAction('gform/submission/pre_submission', function(form) {
+
+    if (form.formId != 4) {
+        return;
+    }
+
+    document.getElementById('input_4_10').value =
+        document.getElementById('postcode').value;
+
+});
 	</script>

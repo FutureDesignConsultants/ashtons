@@ -544,16 +544,32 @@ window.addEventListener("load", function() {
         },
         position: "bottom-right",
 
+        // onInitialise: function() {
+        //     if (this.getStatus() === 'allow') {
+        //         enableAnalytics();
+        //         removeCookieBanner();
+        //     }
+        // },
+
+        // onStatusChange: function(status) {
+        //     if (status === 'allow') enableAnalytics();
+        //     removeCookieBanner();
+        // }
+
         onInitialise: function() {
-            if (this.getStatus() === 'allow') {
+            console.log("Cookie status:", this.getStatus());
+
+            if (this.getStatus() === "allow") {
                 enableAnalytics();
-                removeCookieBanner();
             }
         },
 
         onStatusChange: function(status) {
-            if (status === 'allow') enableAnalytics();
-            removeCookieBanner();
+            console.log("Status changed:", status);
+
+            if (status === "allow") {
+                enableAnalytics();
+            }
         }
     });
 });

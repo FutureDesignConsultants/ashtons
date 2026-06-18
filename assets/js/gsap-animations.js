@@ -547,43 +547,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Change cursor on hover
   const cursor = document.getElementById("circle-cursor");
-  const cursorText = cursor.querySelector(".cursor-text");
-  const targets = document.querySelectorAll(".featured-post-link");
 
-  if (window.innerWidth >= 768) {
-    window.addEventListener("mousemove", (e) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.15,
-        ease: "power2.out",
-      });
-    });
+  if (cursor) {
+    const cursorText = cursor.querySelector(".cursor-text");
 
-    targets.forEach((target) => {
-      target.addEventListener("mouseenter", () => {
-        const text = target.getAttribute("data-cursor-text") || "View";
-        cursorText.textContent = text;
+    const targets = document.querySelectorAll(".featured-post-link");
+
+    if (window.innerWidth >= 768) {
+      window.addEventListener("mousemove", (e) => {
         gsap.to(cursor, {
-          scale: 1,
-          opacity: 1,
-          duration: 0.3,
-          ease: "power3.out",
+          x: e.clientX,
+          y: e.clientY,
+          duration: 0.15,
+          ease: "power2.out",
         });
       });
 
-      target.addEventListener("mouseleave", () => {
-        gsap.to(cursor, {
-          scale: 0,
-          opacity: 0,
-          duration: 0.3,
-          ease: "power3.out",
+      targets.forEach((target) => {
+        target.addEventListener("mouseenter", () => {
+          const text = target.getAttribute("data-cursor-text") || "View";
+          cursorText.textContent = text;
+          gsap.to(cursor, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.3,
+            ease: "power3.out",
+          });
+        });
+
+        target.addEventListener("mouseleave", () => {
+          gsap.to(cursor, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power3.out",
+          });
         });
       });
-    });
-  } else {
-    if (cursor) {
-      cursor.style.display = "none";
+    } else {
+      if (cursor) {
+        cursor.style.display = "none";
+      }
     }
   }
 });

@@ -1248,11 +1248,13 @@ document.addEventListener("DOMContentLoaded", function () {
   window.openEnquiryModal = openEnquiryModal;
   window.closeEnquiryModal = closeEnquiryModal;
 
-  enquiryModal.addEventListener("click", function (e) {
-    if (e.target === enquiryModal) {
-      closeEnquiryModal();
-    }
-  });
+  if (enquiryModal) {
+    enquiryModal.addEventListener("click", function (e) {
+      if (e.target === enquiryModal) {
+        closeEnquiryModal();
+      }
+    });
+  }
 
   // Set Tracking Codes
   function setTrackingCookie(name, value, days) {
