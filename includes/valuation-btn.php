@@ -283,8 +283,6 @@ document.addEventListener('submit', function(e) {
         const postcode = document.getElementById('postcode').value;
 
         document.getElementById('input_4_10').value = postcode;
-
-        alert('Postcode being submitted: ' + postcode);
     }
 
 });
